@@ -1,0 +1,25 @@
+<div class="contact-section">
+   
+    <div class="form-container">
+<h2 class="heading">Contact Us</h2>
+      <h1>Get in Touch.</h1>
+      <p>Fill out the form below and we’ll get back to you as soon as possible</p>
+  
+      <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+        <div class="input-row">
+          <input formControlName="firstName" type="text" placeholder="First Name" required />
+          <input formControlName="lastName" type="text" placeholder="Last Name" required />
+        </div>
+  
+        <input formControlName="email" type="email" placeholder="Mail" required />
+        <textarea formControlName="message" placeholder="Message" required></textarea>
+  
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+  
+    <div class="image-container">
+      <img src="contact-us/texting-concept-illustration_114360-1639 (1).avif" alt="contact illustration" />
+    </div>
+  </div>
+  

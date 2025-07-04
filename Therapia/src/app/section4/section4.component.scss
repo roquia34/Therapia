@@ -1,0 +1,105 @@
+
+
+$bg-color: #f4f6f9;
+$text-color: #1f2937;
+$main-color: #6f60bf;
+.contact-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: #fff;
+    gap: 8rem; // خليه أقل شويه أحلى للعين
+    padding: 0 8%;
+  
+   
+
+    .form-container {
+       .heading {
+    text-align: center;
+    font-size: 6.5rem;
+    padding: 30px;
+    color: $text-color;
+   
+}
+      flex: 1;
+      max-width: 500px;
+      width: 100%;
+      padding: 20px;
+  
+      h1 {
+        font-size: 36px;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+  
+      p {
+        color: #666;
+        margin-bottom: 30px;
+        font-size: 16px;
+      }
+  
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+  
+        .input-row {
+          display: flex;
+          gap: 15px;
+  
+          input {
+            flex: 1;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 14px;
+          }
+        }
+  
+        input,
+        textarea {
+          width: 100%;
+          padding: 12px;
+          border: 1px solid #ccc;
+          border-radius: 8px;
+          font-size: 14px;
+        }
+  
+        textarea {
+          resize: none;
+          min-height: 120px;
+        }
+  
+       button {
+  padding: 14px;
+  background: linear-gradient(to right, #6f60bf, #5e4ea8); // تدرج مشتق من #6f60bf
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+
+  &:hover {
+    background: linear-gradient(to right, #5e4ea8, #4c3e91); // تدرج داكن للهوفر
+  }
+}
+
+      }
+    }
+  
+    .image-container {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  
+      img {
+        width: 100%;
+        max-width: 450px; // عملت حدود عشان الصورة متكبرش وتكسر التنسيق
+        height: auto;
+      }
+    }
+  }
+  

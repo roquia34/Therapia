@@ -1,0 +1,29 @@
+.no-sessions-box {
+    text-align: center;
+    margin-top: 30px;
+   
+  padding-top: 13rem;
+  padding-bottom: 20rem;
+  
+    .no-sessions {
+      color: #888;
+      font-size: 16px;
+      margin-bottom: 15px;
+    }
+  .book-now {
+  background: linear-gradient(to right, #6f60bf, #8d7ae9); // تدرج بنفسجي جذاب
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.3s;
+
+  &:hover {
+    background: linear-gradient(to right, #5b52a5, #7866d3); // تدرج أغمق قليلاً عند التحويم
+  }
+}
+
+  }
+  

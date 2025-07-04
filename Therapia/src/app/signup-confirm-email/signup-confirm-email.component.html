@@ -1,0 +1,14 @@
+<div class="confirm-container">
+  <div class="card">
+    <h1>🎉 Check Your Email!</h1>
+    <p>We have sent you a confirmation email. <br>
+      Please verify your email address to complete your registration.
+    </p>
+
+    <button *ngIf="!countdownStarted" (click)="startCountdown()">Reload Page</button>
+
+    <div *ngIf="countdownStarted">
+      <p>Redirecting in {{ countdown }} seconds...</p>
+    </div>
+  </div>
+</div>

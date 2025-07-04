@@ -1,0 +1,416 @@
+// Variables
+$primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+$success-gradient: linear-gradient(135deg, #4ecdc4 0%, #44a08d 100%);
+$danger-gradient: linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%);
+$warning-gradient: linear-gradient(135deg, #ffa726 0%, #fb8c00 100%);
+$glass-bg: rgba(255, 255, 255, 0.95);
+$border-radius: 16px;
+$box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+$transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+// Color palette
+$primary-color: #667eea;
+$success-color: #4ecdc4;
+$danger-color: #ff6b6b;
+$warning-color: #ffa726;
+$text-primary: #2d3748;
+$text-secondary: #8b9dc3;
+$border-color: #e1e8ed;
+$background-light: #fafbfc;
+
+// Mixins
+@mixin glassmorphism($opacity: 0.95) {
+  background: rgba(255, 255, 255, $opacity);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+@mixin button-hover($r, $g, $b) {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 35px rgba($r, $g, $b, 0.4);
+}
+
+@mixin shimmer-animation {
+  position: relative;
+  overflow: hidden;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+    animation: shimmer 2s infinite;
+  }
+}
+
+@mixin input-state($color) {
+  border-color: $color;
+  box-shadow: 0 0 0 4px rgba($color, 0.1);
+  
+  .input-icon {
+    color: $color;
+    transform: translateY(-50%) scale(1.1);
+  }
+  
+  .form-label {
+    color: $color;
+  }
+}
+
+// Host styles
+:host {
+  display: block;
+  width: 100%;
+  min-height: 100vh;
+  background: #f4f6f8;
+  padding: 20px;
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+    pointer-events: none;
+    z-index: -1;
+  }
+}
+
+// Form Container
+.form-container {
+  @include glassmorphism();
+  border-radius: 24px;
+  padding: 40px;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  box-shadow: $box-shadow;
+  position: relative;
+  overflow: hidden;
+  transform: translateY(0);
+  transition: $transition;
+  margin-top: 0px;
+  margin-bottom: 120px;
+  background-color: #fff;
+
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4);
+    background-size: 400% 400%;
+    animation: gradientShift 3s ease infinite;
+  }
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 25px 80px rgba(0, 0, 0, 0.15);
+  }
+  
+  &.loading {
+    pointer-events: none;
+    opacity: 0.8;
+  }
+  
+  &.clearing {
+    transform: scale(0.95);
+    transition: transform 0.3s ease;
+  }
+}
+
+// Steps Header
+.steps-header {
+  background: $primary-gradient;
+  color: white;
+  padding: 20px;
+  border-radius: $border-radius;
+  margin-bottom: 30px;
+  text-align: center;
+  @include shimmer-animation;
+  
+  .steps-text {
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    
+    i {
+      font-size: 20px;
+    }
+  }
+}
+
+// Form Group
+.form-group {
+  margin-bottom: 25px;
+  position: relative;
+  
+  &.has-icon .form-input {
+    padding-left: 55px;
+  }
+  
+  &.file-input-group {
+    .form-input {
+      opacity: 0;
+      position: absolute;
+      z-index: 2;
+      cursor: pointer;
+      height: 100%;
+    }
+    
+    .file-input-overlay {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 30px 20px;
+      border: 2px dashed $border-color;
+      border-radius: 12px;
+      background: $background-light;
+      transition: $transition;
+      cursor: pointer;
+      min-height: 120px;
+      
+      i {
+        font-size: 32px;
+        color: $text-secondary;
+        margin-bottom: 10px;
+        transition: $transition;
+      }
+      
+      span {
+        color: $text-secondary;
+        font-weight: 500;
+        transition: $transition;
+      }
+      
+      small {
+        color: $text-secondary;
+        font-size: 12px;
+        margin-top: 5px;
+      }
+      
+      &:hover,
+      &.drag-over {
+        border-color: $primary-color;
+        background: rgba($primary-color, 0.05);
+        
+        i, span {
+          color: $primary-color;
+        }
+      }
+      
+      &.file-selected {
+        border-color: $success-color;
+        background: rgba($success-color, 0.05);
+        
+        i {
+          color: $success-color;
+          font-size: 24px;
+        }
+        
+        span {
+          color: $success-color;
+          font-weight: 600;
+        }
+      }
+    }
+  }
+}
+
+// Form Input
+.form-input {
+  width: 100%;
+  padding: 16px 20px;
+  border: 2px solid $border-color;
+  border-radius: 12px;
+  font-size: 16px;
+  background: $background-light;
+  transition: $transition;
+  outline: none;
+  font-family: inherit;
+  color: $text-primary;
+  
+  &:focus {
+    @include input-state($primary-color);
+    background: white;
+    transform: translateY(-2px);
+  }
+  
+  &.valid {
+    @include input-state($success-color);
+  }
+  
+  &.invalid {
+    @include input-state($danger-color);
+  }
+  
+  &::placeholder {
+    color: $text-secondary;
+    font-weight: 400;
+  }
+  
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+// Input Icon
+.input-icon {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: $text-secondary;
+  font-size: 18px;
+  transition: $transition;
+  pointer-events: none;
+  z-index: 1;
+}
+
+// Form Label
+.form-label {
+  position: absolute;
+  top: -10px;
+  left: 15px;
+  background: white;
+  padding: 0 8px;
+  font-size: 12px;
+  font-weight: 600;
+  color: $text-secondary;
+  transition: $transition;
+  pointer-events: none;
+  z-index: 1;
+}
+
+// Error Message
+.error-message {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 8px;
+  color: $danger-color;
+  font-size: 12px;
+  font-weight: 500;
+  animation: slideInDown 0.3s ease;
+  
+  i {
+    font-size: 14px;
+  }
+}
+
+// Button Group
+.button-group {
+  display: flex;
+  gap: 15px;
+  margin-top: 35px;
+}
+
+// Button Base
+.btn {
+  flex: 1;
+  padding: 16px 24px;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: $transition;
+  position: relative;
+  overflow: hidden;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  min-height: 54px;
+  
+  .btn-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: $transition;
+  }
+  
+  .btn-loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: $transition;
+    
+    i {
+      animation: spin 1s linear infinite;
+      font-size: 18px;
+    }
+  }
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+  }
+  
+  &:hover::before {
+    left: 100%;
+  }
+  
+  &:active {
+    transform: translateY(-1px);
+  }
+  
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none !important;
+  }
+  
+  &.loading {
+    pointer-events: none;
+    
+    .btn-text {
+      opacity: 0;
+    }
+    
+    .btn-loader {
+      opacity: 1;
+    }
+  }
+}
+
+// Submit Button
+.btn-submit {
+  background: $success-gradient;
+  color: white;
+  box-shadow: 0 8px 25px rgba(78, 205, 196, 0.3);
+  
+  &:hover:not(:disabled) {
+    @include button-hover(78, 205, 196);
+  }
+}
+
+// Clear Button
+.btn-clear {
+  background: $danger-gradient;
+  color: white;
+  box-shadow: 0 8px 25px rgba(255, 107, 107, 0.3);}

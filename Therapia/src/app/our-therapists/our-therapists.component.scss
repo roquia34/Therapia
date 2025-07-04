@@ -1,0 +1,500 @@
+.therapists-page {
+  padding-top: 10rem;
+  background: #f8f9fa;
+  min-height: 100vh;
+
+  .ready-now-container {
+    display: flex;
+    justify-content: center;
+    padding: 2rem;
+
+    .ready-now-box {
+      background: #fff;
+      border-radius: 16px;
+      padding: 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      max-width: 900px;
+      width: 100%;
+
+      .left-side {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+
+        h2 {
+          font-size: 24px;
+          font-weight: 700;
+          color: #484949;
+          font-family: 'Inter', 'Roboto', 'Helvetica Neue', sans-serif;
+        }
+
+        .info {
+          display: flex;
+          align-items: center;
+          gap: 0.75rem;
+
+          .avatars-group {
+            display: flex;
+            position: relative;
+            
+          }
+          
+          .therapist-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #fff;
+            box-shadow: 0 0 5px rgba(0,0,0,0.1);
+            position: relative;
+            margin-left: -12px; // خليهم يركبوا فوق بعض
+            background-color: #f0f0f0; // لو الصورة مش موجودة
+            z-index: 1;
+          
+            &:first-child {
+              margin-left: 0;
+            }
+          }
+          
+
+
+
+          .status {
+            font-size: 15px;
+            color: #555;
+
+            .green-dot {
+              width: 10px;
+              height: 10px;
+              background: #34c38f;
+              border-radius: 50%;
+              display: inline-block;
+              margin-right: 0.5rem;
+            }
+          }
+        }
+      }
+
+      .right-side {
+        .explore-btn {
+          background: transparent;
+          border: 1px solid #007bff;
+          color: #007bff;
+          padding: 1rem 4rem;
+          border-radius: 8px;
+          font-size: 1rem;
+          cursor: pointer;
+          transition: 0.3s ease;
+
+          &:hover {
+            background: #007bff;
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
+
+  .therapists-main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    max-width: 900px;
+    width: 100%;
+    margin: 0 auto;
+
+    .page-title {
+      font-size: 3rem;
+      color: #1d7ce0;
+      margin: 2rem 0;
+      text-align: center;
+    }
+
+    .breadcrumb {
+      font-size: 14px;
+      color: #5f6368;
+
+      a {
+        color: #1a73e8;
+        text-decoration: none;
+      }
+    }
+
+    .search-sort-bar {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 2rem 0;
+      width: 100%;
+
+      .search-input,
+      .sort-select {
+        padding: 12px 16px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        background: #fff;
+        font-size: 14px;
+        outline: none;
+      }
+
+      .search-input {
+        flex: 2;
+      }
+
+      .sort-select {
+        flex: 1;
+      }
+    }
+
+    .content {
+      display: grid;
+      grid-template-columns: 250px 1fr;
+      gap: 3rem;
+      width: 100%;
+
+      // .filters {
+      //   background: #fff;
+      //   padding: 20px;
+      //   border-radius: 10px;
+      //   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+      //   h2 {
+      //     color: #007bff;
+      //     margin-bottom: 20px;
+      //     text-align: center;
+      //   }
+
+      //   .filter-group {
+      //     margin-bottom: 20px;
+
+      //     h3 {
+      //       font-size: 16px;
+      //       color: #007bff;
+      //       margin-bottom: 10px;
+      //     }
+
+      //     .checkbox-group,
+      //     .stars,
+      //     .range {
+      //       display: flex;
+      //       flex-direction: column;
+      //       gap: 8px;
+      //     }
+      //   }
+
+      //   .reset-btn {
+      //     margin-top: 20px;
+      //     background: transparent;
+      //     border: 1px solid #007bff;
+      //     color: #007bff;
+      //     padding: 10px;
+      //     border-radius: 8px;
+      //     font-weight: bold;
+      //     cursor: pointer;
+
+      //     &:hover {
+      //       background: #007bff;
+      //       color: #fff;
+      //     }
+      //   }
+      // }
+
+      .filters {
+        background: #ffffff;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+        width: 280px;
+        font-family: 'Roboto', sans-serif;
+      }
+
+      .checkbox-group label,
+.radio-group label {
+  color: #333;
+  font-size: 14px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.date-picker {
+  color: #333;
+  font-size: 14px;
+}
+
+      
+      .filters h2 {
+        color: #0066ff;
+        font-size: 20px;
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      
+      .filter-group {
+        margin-bottom: 20px;
+
+        span{
+          color: #333;
+        }
+      }
+      
+      
+      .filter-group h3 {
+        font-size: 14px;
+        color: #0066ff;
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      
+      .checkbox-group, .radio-group {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      
+      .date-picker, .select-field {
+        width: 100%;
+        padding: 8px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        margin-top: 8px;
+      }
+      
+      .stars {
+        font-size: 20px;
+        color: #ffd700;
+      }
+      
+      .range {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      
+      .range input[type="range"] {
+        flex: 1;
+        appearance: none;
+        height: 5px;
+        background: linear-gradient(to right, #007bff, #66b2ff); // تدرج لون جميل
+        border-radius: 5px;
+        outline: none;
+        transition: background 450ms ease-in;
+      }
+      
+      .range input[type="range"]::-webkit-slider-thumb {
+        appearance: none;
+        width: 18px;
+        height: 18px;
+        background: #ffffff;
+        border: 2px solid #007bff;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: transform 0.2s ease;
+      }
+      
+      .range input[type="range"]::-webkit-slider-thumb:hover {
+        transform: scale(1.2); // يكبر عند السحب
+      }
+      
+      
+     
+      
+      .reset-btn {
+        width: 100%;
+        padding: 10px;
+        border: 2px solid #0066ff;
+        background: transparent;
+        color: #0066ff;
+        font-weight: bold;
+        border-radius: 8px;
+        margin-top: 10px;
+        cursor: pointer;
+        transition: 0.3s ease;
+      }
+      
+      .reset-btn:hover {
+        background: #0066ff;
+        color: #ffffff;
+      }
+      
+
+      .therapists-list {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); // عمودين
+        gap: 1rem; // المسافة بين الكروت أفقي ورأسي
+        padding: 1rem; // padding حوالين المجموعة كلها
+        align-content: start; // <<< دي الإضافة الصح
+
+      }
+      
+      .therapist-card {
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.08);
+        padding: 1rem 1.2rem; // padding جوه الكارد
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        transition: 0.3s ease;
+        height: 340px;
+        color: black;
+
+        margin: 0; // مهم: مفيش margin خارجي
+        width: 100%;
+        
+        &:hover {
+          box-shadow: 0 0 20px rgba(0, 0, 0, 0.12);
+          transform: translateY(-5px);
+        }
+      }
+      
+     
+      
+      .therapist-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.15);
+      }
+      
+      .card-header {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+      
+      .doctor-img {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+      
+      .doctor-info {
+        text-align: left;
+      }
+      
+      .doctor-name {
+        font-size: 1.1rem;
+        font-weight: bold;
+        margin: 0;
+        color: #666;
+      }
+      
+      .doctor-title {
+        color: #666;
+        font-size: 0.9rem;
+      }
+      
+      .doctor-sessions {
+        font-size: 0.85rem;
+        color: #4a90e2;
+      }
+      
+      .doctor-rating {
+        display: flex;
+        align-items: center;
+        font-size: 0.85rem;
+        margin-top: 4px;
+      }
+      
+      .stars {
+        color: #ffc107;
+        margin-right: 4px;
+      }
+      
+      .stars span.filled {
+        color: #ffc107;
+      }
+      
+      .stars span {
+        // color: #ccc;
+        color: #ffc107;
+      }
+      
+      .reviews {
+        color: #888;
+      }
+      
+      .card-body {
+        margin-top: 1rem;
+        text-align: left;
+      }
+      
+      .interests {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-bottom: 10px;
+      }
+      
+      .tag {
+        background: #e0f7f6;
+        color: #009688;
+        padding: 4px 8px;
+        border-radius: 12px;
+        font-size: 0.8rem;
+      }
+      
+      .appointment {
+        margin: 10px 0;
+        font-size: 0.9rem;
+        color: #666;
+      }
+      
+      .pricing {
+        font-size: 0.9rem;
+        font-weight: bold;
+        color: blue;
+        margin-bottom: 12px;
+        .num-time{
+          color:#666 ;
+        }
+      }
+      
+      .card-actions {
+        display: flex;
+        justify-content: space-between;
+      }
+      
+      .view-profile,
+      .book-now {
+        flex: 1;
+        padding: 8px;
+        border-radius: 8px;
+        border: none;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+      
+      .view-profile {
+        background-color: transparent;
+        color: #4a90e2;
+        border: 1px solid #4a90e2;
+        margin-right: 5px;
+      }
+      
+      .view-profile:hover {
+        background-color: #4a90e2;
+        color: #fff;
+      }
+      
+      .book-now {
+        background-color: #4a90e2;
+        color: #fff;
+      }
+      
+      .book-now:hover {
+        background-color: #357ABD;
+      }
+      
+      
+    }
+  }
+}

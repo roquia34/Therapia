@@ -1,0 +1,144 @@
+// تعريف المتغيرات
+$bg-color: #000;
+$snd-bg-color: #111;
+$text-color: #1f2937;
+$main-color:#dfdefe ;
+
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+  
+}
+
+
+
+.container {
+    text-align: center;
+    position: fixed;
+    z-index: 100000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+    margin: 0px 80px;
+
+    .close-btn {
+        z-index: 100000;
+        position: fixed;  /* يبقى ثابتًا في أعلى الصفحة حتى مع التمرير */
+        top: 20px;        /* مسافة 20 بكسل من الأعلى */
+        right: 20px;      /* مسافة 20 بكسل من اليمين */
+        background: $main-color;  /* لون خلفية أحمر */
+        color: #fff;         /* لون النص أبيض */
+        border: none;        /* بدون حدود */
+        border-radius: 50%;  /* دائرة كاملة */
+        width: 30px;         /* العرض */
+        height: 30px;        /* الارتفاع */
+        font-size: 15px;     /* حجم النص */
+        font-weight: bold;   /* نص عريض */
+        cursor: pointer;     /* تغيير شكل المؤشر عند المرور عليه */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);  /* ظل خفيف */
+        transition: all 0.3s ease;  /* تأثير ناعم */
+      
+        &:hover {
+          background: #b3b4f6;  /* يصبح لونه أحمر غامق عند المرور */
+          transform: scale(1.1); /* تكبير بسيط عند التمرير */
+        }
+      }
+  }
+
+  h1 {
+    font-size: 6rem;
+    color: $text-color;
+    margin-bottom: 100px; // تقليل المسافة بين العنوان والكروت
+    animation: fadeIn 2s ease-in-out;
+    text-align: center;
+    margin-left: 80px;
+  }
+
+  .cards {
+    display: flex;
+    gap: 20px; // تقليل المسافة بين الكروت
+    justify-content: center;
+    flex-wrap: wrap; // لضمان التجاوب عند تصغير الشاشة
+    animation: slideIn 1.5s ease-in-out;
+    margin-left: 80px;
+   
+  }
+  
+
+.card {
+  background-color: $main-color;
+  border-radius: 15px;
+  padding: 20px;
+  width: 250px;
+  height: 350px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+  animation: floatUp 2s ease-in-out;
+
+  img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 10px;
+    filter: grayscale(50%);
+    transition: filter 0.3s ease;
+  }
+
+  p {
+    margin-top: 20px;
+    font-size: 1.5rem;
+    color: $text-color;
+  }
+
+  &:hover {
+    transform: translateY(-20px);
+   box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.3);
+    box-shadow:#FBF9F1;
+    background-color:#b3b4f6;
+    
+
+    img {
+      filter: grayscale(0%);
+    }
+
+    p {
+      color: $main-color;
+    }
+  }
+}
+
+// الحركات (Animations)
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes floatUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+

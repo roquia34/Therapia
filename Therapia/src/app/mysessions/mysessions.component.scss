@@ -1,0 +1,40 @@
+/* layout-container: تجويف عام للسايدبار والمحتوى */
+.layout-container {
+
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+  padding: 24px;
+  min-height: 100vh;
+  background-color: #f4f6f8; // لون خلفية خفيف يعطي تباين
+
+  margin-top: 90px; // حسب ارتفاع الـ header
+
+
+
+
+}
+
+/* السايدبار نفسه */
+app-patient-menu {
+  
+  width: 270px; // 👈 مهم لتحديد عرض ثابت
+  position: relative;
+  height: fit-content;
+  border-radius: 16px;
+  background-color: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  padding: 1.5rem 1rem;
+  margin-top: 30px;
+  
+}
+
+/* منطقة المحتوى */
+.main-content {
+  
+  flex: 1;
+  padding: 0;
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+}

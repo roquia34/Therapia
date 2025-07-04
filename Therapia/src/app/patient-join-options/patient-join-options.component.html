@@ -1,0 +1,28 @@
+<div class="join-options-container">
+    <h1>Join Options</h1>
+  
+    <!-- صورة المستخدم -->
+    <div class="profile-icon">
+      <i class="fa fa-user"></i>
+    </div>
+  
+    <!-- إدخال رابط -->
+    <div class="option">
+      <label for="url">Enter Link</label>
+      <input type="text" id="url" [(ngModel)]="joinLink" placeholder="Enter link..." />
+      <button class="neumorphic-btn" (click)="submitLink()">Submit Link</button>
+    </div>
+  
+    <!-- إرسال طلب انضمام -->
+    <div class="option">
+      <button class="neumorphic-btn" (click)="sendJoinRequest()">Send Request</button>
+      <p *ngIf="requestStatus">Status: {{ requestStatus }}</p>
+    </div>
+  
+    <!-- التحقق من الحساب -->
+    <div class="option">
+      <button class="neumorphic-btn" (click)="verifyAccount()">Admin Verification</button>
+      <p *ngIf="verificationStatus">Verification: {{ verificationStatus }}</p>
+    </div>
+  </div>
+  

@@ -1,0 +1,63 @@
+.guideline-wrapper {
+  padding: 2rem;
+  max-width: 800px;
+  margin: auto;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  font-family: 'Segoe UI', sans-serif;
+
+  .guideline-title {
+    text-align: center;
+    font-size: 2.2rem;
+    margin-bottom: 2rem;
+    color: #1f2937;
+    font-weight: 500;
+  }
+
+  .timeline-vertical {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .timeline-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.8rem;
+    
+    // ✅ خلفية بنفسجية فاتحة بدلاً من الأزرق
+    background: #f3f1fc;
+    border-radius: 14px;
+
+    // ✅ ظل بنفسجي ناعم بدلاً من الأزرق
+    box-shadow: 0 4px 12px rgba(111, 96, 191, 0.08);
+    transition: 0.3s ease;
+
+    &:hover {
+      background-color: #e7e2f9; // تدرج hover بنفسجي ناعم
+      transform: translateY(-4px);
+    }
+
+    .icon {
+      font-size: 2.2rem;
+      color: #6f60bf; // ✅ اللون الأساسي
+      flex-shrink: 0;
+    }
+
+    .content {
+      h3 {
+        font-size: 2rem;
+        margin-bottom: 0.4rem;
+        color: #1f2937;
+      }
+
+      p {
+        font-size: 1.5rem;
+        color: #4b5563;
+        line-height: 1.6;
+      }
+    }
+  }
+}

@@ -1,0 +1,232 @@
+$bg-color: #000;
+$snd-bg-color: #111;
+$text-color: #1f2937;
+$main-color: #1f2937;
+
+.form-box.signup {
+  background: #a3b1f7; // نفس لون login
+}
+
+/* login form code */
+* {
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.container {
+  display: flex;
+  width: 850px;
+  height: 550px;
+  background: #a3b1f7;
+  border-radius: 30px;
+  box-shadow: 0 0 30px rgba(111, 96, 191, 0.5);
+  overflow: hidden;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: fixed;
+  z-index: 100000;
+
+  .close-btn {
+    z-index: 100000;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #b6bbd1;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+}
+
+.form-box {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  border-radius: 30px;
+  background: #cbcddd;
+  right: 0;
+  display: flex;
+  align-items: center;
+  color: #fff;
+  text-align: center;
+  padding: 40px;
+  z-index: 1001;
+}
+
+span {
+  color: red;
+  left: 0px;
+  font-size: 15px;
+}
+
+form {
+  width: 100%;
+}
+
+.container h1 {
+  font-size: 36px;
+  margin: -10px 0;
+}
+
+.input-box {
+  position: relative;
+  margin: 30px 0;
+}
+
+.input-box input {
+  width: 100%;
+  padding: 13px 50px 13px 20px;
+  background: #1f2937; // لون داكن
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  color: #fff; // النص داخل input
+  font-weight: 500;
+}
+
+.input-box input::placeholder {
+  color: #d1d5db; // رمادي فاتح
+  font-weight: 400;
+}
+
+.input-box i {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translate(-50%);
+  font-size: 20px;
+  color: #fff;
+}
+
+.forget-link {
+  margin: 50px 0 15px;
+}
+
+.forget-link a {
+  font-size: 14.5px;
+  color: #d1d5db;
+  text-decoration: none;
+}
+
+.btn {
+  width: 100%;
+  height: 48px;
+  background: #1f2937; // نفس لون input
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  color: #fff; // لون النص
+  font-weight: 600;
+  box-shadow: 0 0 10px rgba(31, 41, 55, 0.4);
+
+  &:hover {
+    background: #111827; // داكن أكثر عند hover
+  }
+}
+
+.container p {
+  font-size: 14.5px;
+  margin: 15px 0;
+}
+
+.social-icons a {
+  display: inline-flex;
+  padding: 10px;
+  border: 2px solid #a3b1f7;
+  border-radius: 8px;
+  font-size: 24px;
+  color: $text-color;
+  text-decoration: none;
+  margin: 0 8px;
+}
+
+.toggle-box {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.form-box.signup {
+  width: 50%;
+  height: 100%;
+  background: #b6bbd1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  padding: 40px;
+  border-radius: 0 30px 30px 0;
+}
+
+.toggle-box {
+  width: 50%;
+  height: 100%;
+  background: #a3b1f7;
+  border-radius: 30px 0 0 30px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.text-container {
+  text-align: center;
+}
+
+.toggle-panel {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: url('/signup/signup.jpg') no-repeat center center/cover;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 30px 0 0 30px;
+}
+
+.overlay-content {
+  width: 100%;
+  text-align: center;
+  color: white;
+  padding: 20px;
+  border-radius: 0 0 30px 0;
+}
+
+.overlay-content h2 {
+  margin: 10px 0;
+  font-size: 24px;
+}
+
+.overlay-content p {
+  margin: 5px 0;
+  font-size: 14px;
+}
+
+.overlay-content .btn {
+  margin-top: 10px;
+  width: auto;
+  padding: 10px 20px;
+  background-color: #b6bbd1;
+  border: none;
+  border-radius: 8px;
+  color: #1f2937;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #a1a9cc;
+  }
+}

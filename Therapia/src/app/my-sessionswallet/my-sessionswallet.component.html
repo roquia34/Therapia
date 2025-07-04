@@ -1,0 +1,178 @@
+<div class="form-container" [class.loading]="isLoading">
+  <!-- Steps Header -->
+  <div class="steps-header">
+    <div class="steps-text">
+      <i class="fas fa-clipboard-list"></i>
+      Steps
+    </div>
+  </div>
+
+  <!-- Form -->
+  <form [formGroup]="modernForm" (ngSubmit)="onSubmit()" class="modern-form" novalidate>
+    
+    <!-- Session ID Field -->
+    <div class="form-group has-icon">
+      <input 
+        type="text" 
+        class="form-input" 
+        [class.valid]="isFieldValid('sessionId')"
+        [class.invalid]="isFieldInvalid('sessionId')"
+        placeholder="Session ID" 
+        id="sessionId"
+        formControlName="sessionId"
+        autocomplete="off"
+      >
+      <i class="fas fa-id-card input-icon"></i>
+      <label class="form-label">Session ID</label>
+      
+      <!-- Error Message -->
+      <div class="error-message" *ngIf="getFieldError('sessionId')">
+        <i class="fas fa-exclamation-circle"></i>
+        {{ getFieldError('sessionId') }}
+      </div>
+    </div>
+
+    <!-- Cost Field -->
+    <div class="form-group has-icon">
+      <input 
+        type="number" 
+        class="form-input" 
+        [class.valid]="isFieldValid('cost')"
+        [class.invalid]="isFieldInvalid('cost')"
+        placeholder="Cost" 
+        id="cost"
+        formControlName="cost"
+        step="0.01"
+        min="0"
+        autocomplete="off"
+      >
+      <i class="fas fa-dollar-sign input-icon"></i>
+      <label class="form-label">Cost</label>
+      
+      <!-- Error Message -->
+      <div class="error-message" *ngIf="getFieldError('cost')">
+        <i class="fas fa-exclamation-circle"></i>
+        {{ getFieldError('cost') }}
+      </div>
+    </div>
+
+    <!-- Discount Code Field -->
+    <div class="form-group has-icon">
+      <input 
+        type="text" 
+        class="form-input" 
+        [class.valid]="isFieldValid('discountCode')"
+        [class.invalid]="isFieldInvalid('discountCode')"
+        placeholder="Discount Code" 
+        id="discountCode"
+        formControlName="discountCode"
+        autocomplete="off"
+      >
+      <i class="fas fa-tag input-icon"></i>
+      <label class="form-label">Discount Code</label>
+      
+      <!-- Error Message -->
+      <div class="error-message" *ngIf="getFieldError('discountCode')">
+        <i class="fas fa-exclamation-circle"></i>
+        {{ getFieldError('discountCode') }}
+      </div>
+    </div>
+
+    <!-- Transaction Image Field -->
+    <div class="form-group has-icon file-input-group">
+      <input 
+        type="file" 
+        class="form-input file-input" 
+        id="transactionImage"
+        accept="image/*"
+        (change)="onFileSelected($event)"
+      >
+      <i class="fas fa-image input-icon"></i>
+      <label class="form-label">Transaction Image</label>
+      
+      <div 
+        class="file-input-overlay"
+        (drop)="onFileDrop($event)"
+        (dragover)="onDragOver($event)"
+        (dragleave)="onDragLeave($event)"
+      >
+        <i class="fas fa-cloud-upload-alt"></i>
+        <span>Choose image or drag it here</span>
+      </div>
+    </div>
+
+    <!-- Buttons -->
+    <div class="button-group">
+      <button 
+        type="submit" 
+        class="btn btn-submit" 
+        [disabled]="isLoading"
+        [class.loading]="isLoading"
+      >
+        <span class="btn-text">
+          <i class="fas fa-paper-plane"></i>
+          Submit
+        </span>
+        <div class="btn-loader">
+          <i class="fas fa-spinner"></i>
+        </div>
+      </button>
+      
+      <button 
+        type="button" 
+        class="btn btn-clear" 
+        (click)="onClear()"
+        [disabled]="isLoading"
+      >
+        <span class="btn-text">
+          <i class="fas fa-eraser"></i>
+          Clear
+        </span>
+      </button>
+    </div>
+  </form>
+
+  <!-- Progress Indicator -->
+  <div class="progress-indicator">
+    <div 
+      *ngFor="let step of progressSteps; let i = index"
+      class="progress-step" 
+      [class.active]="step.active"
+      [class.completed]="step.completed"
+      [attr.data-step]="step.step"
+      (click)="goToStep(i)"
+    ></div>
+  </div>
+</div>
+
+<!-- Success Message -->
+<div 
+  class="success-message" 
+  [class.show]="showSuccessMessage"
+  [@slideIn]="showSuccessMessage"
+>
+  <div class="success-content">
+    <i class="fas fa-check-circle"></i>
+    <span>Form submitted successfully!</span>
+  </div>
+</div>
+
+<!-- Error Message -->
+<div 
+  class="error-message-toast" 
+  [class.show]="showErrorMessage"
+  [@slideIn]="showErrorMessage"
+>
+  <div class="error-content">
+    <i class="fas fa-exclamation-triangle"></i>
+    <span>Please check your inputs and try again</span>
+  </div>
+</div>
+
+<!-- Loading Overlay -->
+<div class="loading-overlay" *ngIf="isLoading" [@fadeIn]="isLoading">
+  <div class="loading-spinner">
+    <div class="spinner"></div>
+    <p>Processing your request...</p>
+  </div>
+</div>

@@ -1,0 +1,77 @@
+
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <div class="content-wrapper">
+        <!-- Upcoming Appointments -->
+        <div *ngIf="activeMenuItem === 'upcoming'" class="upcoming-section">
+          <div class="section-header">
+            <h2>Upcoming Appointments</h2>
+            <p class="section-subtitle">Your scheduled therapy sessions</p>
+          </div>
+
+          <div class="appointments-grid">
+            <div 
+              *ngFor="let appointment of upcomingAppointments" 
+              class="appointment-card"
+            >
+              <div class="appointment-header">
+                <div class="doctor-info">
+                  <div class="doctor-avatar">
+                    <span class="avatar-initials">
+                      {{ getInitials(appointment.doctorName) }}
+                    </span>
+                  </div>
+                  <div class="doctor-details">
+                    <h3 class="doctor-name">{{ appointment.doctorName }}</h3>
+                    <p class="doctor-specialty">{{ appointment.doctorSpecialty }}</p>
+                  </div>
+                </div>
+                <div class="appointment-status">
+                  <span class="status-badge upcoming">Upcoming</span>
+                </div>
+              </div>
+
+              <div class="appointment-body">
+                <div class="appointment-time">
+                  <div class="time-info">
+                    <span class="time-icon">🕐</span>
+                    <div class="time-details">
+                      <p class="session-time">{{ appointment.sessionTime }}</p>
+                      <p class="session-date">{{ formatDate(appointment.date) }}</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="appointment-actions">
+                  <button class="btn-primary">Join Session</button>
+                  <button class="btn-secondary">Reschedule</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Empty State -->
+          <div *ngIf="upcomingAppointments.length === 0" class="empty-state">
+            <div class="empty-icon">📅</div>
+            <h3>No Upcoming Appointments</h3>
+            <p>You don't have any scheduled appointments at the moment.</p>
+            <button class="btn-primary">Book New Appointment</button>
+          </div>
+        </div>
+
+        <!-- Other Sections -->
+        <div *ngIf="activeMenuItem !== 'upcoming'" class="other-section">
+          <div class="section-header">
+            <h2>{{ activeMenuItem | titlecase }}</h2>
+            <p class="section-subtitle">This section is under development</p>
+          </div>
+          <div class="placeholder-content">
+            <div class="placeholder-icon">🚧</div>
+            <p>{{ activeMenuItem | titlecase }} content will be available soon.</p>
+          </div>
+        </div>
+      </div>
+    </main>
+  
+

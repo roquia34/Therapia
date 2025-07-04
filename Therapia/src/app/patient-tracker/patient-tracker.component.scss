@@ -1,0 +1,44 @@
+.patient-tracker {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #d9e9ec;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 10px 10px 30px #b0c4c7, -10px -10px 30px #ffffff;
+  
+    .title {
+      font-size: 24px;
+      color: #035d6f;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    }
+  
+    .info-container {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin: 20px 0;
+  
+      .info-box {
+        background: #e0f7fa;
+        padding: 15px;
+        border-radius: 10px;
+        box-shadow: inset 5px 5px 10px #b0c4c7, inset -5px -5px 10px #ffffff;
+        text-align: center;
+  
+        h3 {
+          color: #0293a3;
+        }
+        span {
+          font-weight: bold;
+          color: #035d6f;
+        }
+      }
+    }
+  
+    .chart-container {
+      width: 80%;
+      max-width: 600px;
+    }
+  }
+  

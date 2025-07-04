@@ -1,0 +1,52 @@
+
+
+$bg-color: #000;
+$snd-bg-color: #111;
+$text-color: #1f2937;
+$main-color: #1f2937;
+
+
+
+/* about section code */
+.about {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15rem;
+
+}
+
+.about-img {
+    width: 48.4vw;
+    border: 2px solid $main-color;
+    border-radius: 1rem;
+    transform: 0.5s ease;
+    img{
+        
+        border-radius: 1rem;
+    }
+
+}
+
+.about-img:hover {
+    border: 2px solid $main-color;
+    transform: scale(1.01);
+}
+
+.about-content .heading {
+    text-align: center;
+    font-size: 6rem;
+}
+
+.about-content h2 {
+    text-align: left;
+    line-height: 1.2;
+    color: $text-color;
+}
+
+.about-content p {
+    font-size: 1.6rem;
+    margin: 2rem 0 2rem;
+    color: $text-color;
+}
+

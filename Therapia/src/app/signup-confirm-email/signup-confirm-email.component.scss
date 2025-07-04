@@ -1,0 +1,74 @@
+.confirm-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f4f6f9;
+  text-align: center;
+  padding: 20px;
+
+  .card {
+    background: #111;
+    padding: 50px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    animation: fadeIn 1s ease-in-out;
+    color: #fff;
+    max-width: 500px;
+    width: 100%;
+
+    h1 {
+      font-size: 2.5rem;
+      color: #6f60bf;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      line-height: 1.5;
+    }
+
+    button {
+      padding: 12px 30px;
+      font-size: 1rem;
+      background: #6f60bf;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      color: #fff;
+      font-weight: bold;
+      transition: 0.3s;
+
+      &:hover {
+        background: #584aad;
+      }
+    }
+
+    .countdown-message {
+      font-size: 1.1rem;
+      margin-top: 20px;
+      color: #bbb;
+      animation: fadeIn 0.5s ease-in-out;
+    }
+
+    .home-link {
+      display: block;
+      margin-top: 20px;
+      color: #fff;
+      text-decoration: underline;
+      font-size: 1rem;
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

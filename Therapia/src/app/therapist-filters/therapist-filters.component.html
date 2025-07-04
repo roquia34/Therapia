@@ -1,0 +1,60 @@
+<div class="filters-section" [formGroup]="filtersForm">
+    <form >
+  
+      <div class="filter-group">
+        <h3>Availability</h3>
+        <label><input type="checkbox" formControlName="today"> Today</label>
+        <label><input type="checkbox" formControlName="thisWeek"> This Week</label>
+        <label><input type="checkbox" formControlName="specificDate"> Specific Date</label>
+      </div>
+  
+      <div class="filter-group">
+        <h3>Areas of Interest</h3>
+        <select formControlName="area">
+          <option value="">Select area</option>
+          <option *ngFor="let area of areas" [value]="area">{{ area }}</option>
+        </select>
+      </div>
+  
+      <div class="filter-group">
+        <h3>Duration</h3>
+        <label><input type="radio" formControlName="duration" value="30"> 30 min</label>
+        <label><input type="radio" formControlName="duration" value="60"> 60 min</label>
+      </div>
+  
+      <div class="filter-group">
+        <h3>Therapist Gender</h3>
+        <label><input type="radio" formControlName="gender" value="male"> Male</label>
+        <label><input type="radio" formControlName="gender" value="female"> Female</label>
+      </div>
+  
+      <div class="filter-group">
+        <h3>Language & Country</h3>
+        <select formControlName="language">
+          <option value="">Select Language</option>
+          <option *ngFor="let lang of languages" [value]="lang">{{ lang }}</option>
+        </select>
+  
+        <select formControlName="country">
+          <option value="">Select Country</option>
+          <option *ngFor="let country of countries" [value]="country">{{ country }}</option>
+        </select>
+      </div>
+  
+      <div class="filter-group">
+        <h3>Session Fees</h3>
+        <input type="range" min="50" max="500" step="10" formControlName="fees">
+        <p>Selected Fee: {{ filtersForm.value.fees }} USD</p>
+      </div>
+  
+      <div class="filter-group">
+        <h3>Other Options</h3>
+        <label><input type="checkbox" formControlName="canPrescribe"> Can prescribe medication</label>
+        <label><input type="checkbox" formControlName="acceptsBundles"> Accepts Bundles</label>
+      </div>
+  
+      <button type="button" (click)="resetFilters()">Reset Filter</button>
+  
+</form>
+ 
+</div> 

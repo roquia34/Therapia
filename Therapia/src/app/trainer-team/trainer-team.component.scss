@@ -1,0 +1,158 @@
+
+
+$bg-color: #f4f6f9;
+$text-color: #1f2937;
+$main-color: #6f60bf;
+
+.heading {
+    text-align: center;
+    font-size: 6.5rem;
+    padding: 30px;
+    color: $text-color;
+   
+}
+
+
+.recovery-team{
+    background-color: $bg-color;
+}
+
+.slider-container {
+    position: relative;
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+    padding: 50px 0;
+    
+  }
+  
+  .recovery-content {
+    display: flex;
+    overflow-x: auto;
+    gap: 2.3rem;
+    padding: 20px;
+    
+    transition: transform 0.5s ease;
+    scrollbar-width: none; /* لإخفاء شريط التمرير في Firefox */
+  
+    &::-webkit-scrollbar {
+      display: none; /* لإخفاء شريط التمرير في Chrome, Safari, Edge */
+    }
+
+    
+    justify-content: center;
+    
+  }
+  
+  .card {
+    
+    flex: 0 0 auto;
+    width: 49%;
+    text-align: center;
+    background: $bg-color;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    transition: transform 0.5s ease,  box-shadow 0.5s ease ,  margin 0.5s ease;
+    height: 350px;
+    
+        border: 1px solid $main-color;
+        
+        cursor: pointer;
+
+        &:hover {
+          
+          transform: scale(1.05);
+          margin: 0 15px; // يزيد المسافة بين العناصر عند الـ hover
+         
+      }
+
+      h5{
+        color: $text-color;
+
+        
+      } 
+      
+      p{
+        color: $text-color;
+        font-size: 15px;
+      }
+       
+  }
+
+ 
+  .card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    
+    // margin-bottom: 1rem;
+
+    &:hover {
+        border: 1px solid $main-color;
+        
+        cursor: pointer;
+    }
+  }
+
+ 
+
+.arrow {
+  position: absolute;
+  top: 60%;
+  transform: translateY(-50%);
+  background-color: $main-color;
+  color: white;
+  font-size: 3rem;
+  padding: 15px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+ 
+
+  &.left {
+      left: 10px;
+      
+  }
+
+  &.right {
+      right: 10px;
+  }
+
+  &:hover {
+      background-color: $bg-color;
+      box-shadow: 0 0 5px $main-color;
+      transform: translateY(-50%) scale(1.1);
+  }
+}
+
+
+.social {
+  text-align: center;
+  padding-bottom: 20px;
+  color: $main-color;
+  margin: 25px;
+
+  a {
+    font-size: 15px;
+    color: $main-color;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    display: inline-block;
+    text-align: center;
+    border-radius: 50%;
+    margin: 0 5px;
+    transition: 0.5s ease-in-out;
+    border: 2px solid $main-color;
+
+    &:hover {
+      transform: scale(1.2) translateY(-10px);
+      background: $main-color;
+      color: #131313;
+      box-shadow: 0 0 25px $main-color;
+  }
+  
+} 
+
+}

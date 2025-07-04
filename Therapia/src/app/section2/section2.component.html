@@ -1,0 +1,28 @@
+<section class="services" id="services">
+    <h2 class="heading">Our <span>Services</span></h2>
+  
+   
+      <div class="services-content" #slider >
+        <div *ngFor="let service of services" class="row">
+          <div class="card">
+            <div class="card-front">
+              <img [src]="service.image" [alt]="service.title" />
+              <h4>{{ service.title }}</h4>
+            </div>
+            <div class="card-back">
+              <p class="description">{{ service.description }}</p>
+            </div>
+          </div>
+         
+        </div>
+
+         
+    
+    
+      </div>
+    
+  <!-- أزرار التنقل -->
+      <div class="arrow left" (click)="prevSlide()">&lt;</div>
+      <div class="arrow right" (click)="nextSlide()">&gt;</div>
+    </section>
+  

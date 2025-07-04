@@ -1,0 +1,51 @@
+:host {
+  display: block;
+  padding: 20px;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f7f9fb;
+}
+
+h3 {
+  font-size: 20px;
+  margin-bottom: 20px;
+  color: #4b3e7f; // بنفسجي داكن للنص
+}
+
+.request-card {
+  background-color: #fff;
+  border-left: 5px solid #6f60bf; // اللون الأساسي
+  box-shadow: 0 2px 8px rgba(111, 96, 191, 0.1); // ظل بنفسجي خفيف
+  padding: 15px 20px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+
+  p {
+    margin: 5px 0;
+    color: #333;
+
+    strong {
+      color: #6f60bf; // بنفسجي للتمييز
+    }
+  }
+}
+
+button {
+  background: linear-gradient(to right, #6f60bf, #8d7ae9); // تدرج بنفسجي جميل
+  color: white;
+  border: none;
+  padding: 10px 22px;
+  border-radius: 25px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.3s;
+  margin-top: 15px;
+
+  &:hover {
+    background: linear-gradient(to right, #5b52a5, #7866d3); // تدرج أغمق عند التحويم
+  }
+}
+
+p {
+  color: #555;
+  font-size: 15px;
+}

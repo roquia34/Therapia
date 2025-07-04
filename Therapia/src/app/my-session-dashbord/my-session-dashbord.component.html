@@ -1,0 +1,373 @@
+
+
+
+
+
+
+
+<div class="sales-report-page">
+ 
+  
+  <!-- Main Sections -->
+  <div class="main-sections">
+    <main class="main-content">
+      <!-- Header -->
+      <div class="header">
+        <div class="user-area">
+          <div class="user-profile">
+            <img src="recoveryDoctors/doctor1.jpg">
+            <div class="user-info">
+              <h5>Ferra Alexandra</h5>
+              <small>patient Store</small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dashboard Cards -->
+      <div class="dashboard-grid">
+        <div class="row-slider-wrapper">
+          <button class="slider-btn prev" (click)="scrollLeft()">&#10094;</button>
+
+          <div class="row-slider" #sliderContainer>
+            
+            <div class="card">
+              <h2>Dr. David Butler</h2>
+              <p>Affiliation: Washington University in St.</p>
+              <p> Louis Contributions:Dr. Shirley Sahrmann is a </p>
+                <p>Dr. Shirley Sahrmann is a </p>
+                <p>pioneer in movement science and rehabilitation.</p>
+            </div>
+            <div class="card">
+               <h2>Dr.Shirley Sahrman</h2>
+              <p>Expertise: Movement System Impairment</p>
+              <p>(MSI) SyndromesAffiliation: Washington </p>
+                <p>University in St.LouisContributions:</p>
+                
+
+                     
+                </div>
+            <div class="card">
+               <h2>Dr.Shirley Sahrman</h2>
+              <p>Expertise: Movement System Impairment</p>
+              <p>(MSI) SyndromesAffiliation: Washington </p>
+                <p>University in St.LouisContributions:</p>
+                
+            </div>
+          </div>
+
+          <button class="slider-btn next" (click)="scrollRight()">&#10095;</button>
+        </div>
+
+        <!-- Big Cards -->
+       <div class="big-card">
+  <div class="card-header">
+    <div>
+      <h3>Weekly Sessions</h3>
+      <small>Track your sessions per week</small>
+    </div>
+    <span>This month</span>
+  </div>
+
+  <canvas 
+    baseChart 
+    [data]="customerHabitsData" 
+    [type]="'bar'" 
+    [options]="customerHabitsOptions">
+  </canvas>
+</div>
+
+
+        <div class="big-card">
+          <div class="card-header">
+            <div>
+              <h3>No Messages</h3>
+              <small>No messages received yet</small>
+            </div>
+          </div>
+
+          <div class="no-messages">
+            <img src="patient/no-messages-cartoon.png" alt="No Messages">
+            <p>No messages</p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Right Section -->
+    <aside class="right-section">
+      <div class="small-card product-statistic-card">
+      <!-- product-statistics.component.html -->
+<div class="stats-card">
+  <div class="card-header">
+    <h3 class="card-title">Weekly Sessions</h3>
+    <div class="dropdown">
+      <button class="dropdown-btn">
+        This Week
+        <svg class="dropdown-icon" width="12" height="12" viewBox="0 0 12 12">
+          <path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5" fill="none"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="stats-content">
+    <div class="chart-section">
+      <div class="chart-container">
+        <svg class="progress-chart" width="160" height="160">
+          <!-- Background circle -->
+          <circle 
+            cx="80" 
+            cy="80" 
+            r="70" 
+            fill="none" 
+            stroke="#f3f4f6" 
+            stroke-width="12">
+          </circle>
+          
+          <!-- Progress circles -->
+          <!-- Blue circle (Electronics) -->
+          <circle 
+  cx="80" 
+  cy="80" 
+  r="70" 
+  fill="none" 
+  stroke="#6f60bf" 
+  stroke-width="12"
+  stroke-dasharray="308.76"
+  stroke-dashoffset="185.26"
+  stroke-linecap="round"
+  transform="rotate(-90 80 80)"
+  class="progress-circle purple-progress">
+</circle>
+
+          
+          <!-- Light Blue circle (Games) -->
+          <circle 
+            cx="80" 
+            cy="80" 
+            r="70" 
+            fill="none" 
+            stroke="#a3b1f7" 
+            stroke-width="12"
+            stroke-dasharray="308.76"
+            stroke-dashoffset="231.57"
+            stroke-linecap="round"
+            transform="rotate(50 80 80)"
+            class="progress-circle light-blue-progress">
+          </circle>
+          
+          <!-- Pink circle (Furniture) -->
+          <circle 
+            cx="80" 
+            cy="80" 
+            r="70" 
+            fill="none" 
+            stroke="#e667d8" 
+            stroke-width="12"
+            stroke-dasharray="308.76"
+            stroke-dashoffset="246.21"
+            stroke-linecap="round"
+            transform="rotate(140 80 80)"
+            class="progress-circle pink-progress">
+          </circle>
+        </svg>
+        
+        <div class="chart-center">
+          <div class="total-sales">21</div>
+          <div class="sales-label">Sessions This Week</div>
+          <div class="growth-rate">+4.8%</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stats-list">
+      <div class="stat-item">
+        <div class="stat-info">
+          <div class="stat-icon electronic">
+              🧘‍♂️
+          </div>
+          <span class="stat-name">Physical Therapy</span>
+        </div>
+        <div class="stat-values">
+          <span class="stat-number">2.487</span>
+          <span class="stat-change positive">+1.9%</span>
+        </div>
+      </div>
+
+      <div class="stat-item">
+        <div class="stat-info">
+          <div class="stat-icon games"> 
+             💬
+          </div>
+          <span class="stat-name">Counseling</span>
+        </div>
+        <div class="stat-values">
+          <span class="stat-number">1.628</span>
+          <span class="stat-change positive">+2.5%</span>
+        </div>
+      </div>
+
+      <div class="stat-item">
+        <div class="stat-info">
+          <div class="stat-icon furniture">
+           🥗
+          </div>
+          <span class="stat-name">Nutrition</span>
+        </div>
+        <div class="stat-values">
+          <span class="stat-number">1.463</span>
+          <span class="stat-change negative">-0.2%</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      </div>
+
+      <!-- Calendar -->
+      <div class="small-card">
+        <div class="calendar">
+          <div class="calendar-header">
+            <div class="title">MY CALENDAR</div>
+        
+            <select [(ngModel)]="selectedMonth" (change)="generateDays()" class="month-select">
+              <option *ngFor="let month of months" [value]="month">{{ month }}</option>
+            </select>
+          </div>
+        
+          <div class="days">
+            <div *ngFor="let day of days"
+                 (click)="selectDay(day.date)"
+                 [class.active]="day.date === selectedDay"
+                 class="calendar-day">
+              <div>{{ day.dayName }}</div>
+              <div>{{ day.date }}</div>
+            </div>
+          </div>
+        
+          <!-- Daily Data Form -->
+          <!-- daily-form.component.html -->
+<!-- Updated daily-form.component.html -->
+<div class="daily-form" *ngIf="showFormSlider" [@formSliderAnimation]>
+  <h3 class="form-title">Daily Data for {{ getCurrentDate() }}</h3>
+  
+  <!-- Exercises Section -->
+  <div class="form-section">
+     <h4>🏋️‍♂️ Exercises</h4>
+    
+    <div class="exercise-grid">
+      <button 
+        *ngFor="let exercise of exerciseOptions"
+        class="exercise-btn"
+        [class.selected]="isExerciseSelected(exercise)"
+        (click)="toggleExercise(exercise)">
+        {{ exercise }}
+      </button>
+    </div>
+  </div>
+
+  <!-- Duration Section -->
+  <div class="form-section">
+    <h4>⏱️ Duration</h4>
+    <div class="duration-container">
+      <div class="duration-item">
+        <label>Hours</label>
+        <div class="duration-controls">
+          <button class="duration-btn minus" (click)="updateDuration('hours', false)">-</button>
+          <span class="duration-value">{{ formData.duration.hours }}</span>
+          <button class="duration-btn plus" (click)="updateDuration('hours', true)">+</button>
+        </div>
+      </div>
+      <div class="duration-item">
+        <label>Minutes</label>
+        <div class="duration-controls">
+          <button class="duration-btn minus" (click)="updateDuration('minutes', false)">-</button>
+          <span class="duration-value">{{ formData.duration.minutes }}</span>
+          <button class="duration-btn plus" (click)="updateDuration('minutes', true)">+</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Meals Section -->
+  <div class="form-section">
+     <h4>🍽️ Meals</h4>
+    <div class="meal-grid">
+      <button 
+        *ngFor="let meal of mealOptions"
+        class="meal-btn"
+        [class.selected]="isMealSelected(meal)"
+        (click)="toggleMeal(meal)">
+        {{ meal }}
+      </button>
+    </div>
+  </div>
+
+  <!-- Water Intake Section -->
+  <div class="form-section">
+    <h4>💧 Water Intake</h4>
+    <div class="water-container">
+      <div class="water-options">
+        <button 
+          *ngFor="let cups of waterOptions"
+          class="water-btn"
+          [class.selected]="formData.waterIntake === cups"
+          (click)="setWaterIntake(cups)">
+          <span>{{ cups }} cup{{ cups > 1 ? 's' : '' }}</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Notes Section -->
+  <div class="form-section">
+    <h4>📝 Notes</h4>
+    <textarea 
+      class="notes-textarea" 
+      placeholder="Write your notes here..."
+      [(ngModel)]="formData.notes">
+    </textarea>
+  </div>
+
+  <!-- Form Buttons -->
+  <div class="form-buttons">
+    <button class="clear-btn" (click)="clearForm()">Clear</button>
+    <button class="submit-btn" (click)="submitForm()">Submit</button>
+  </div>
+</div>
+        </div>
+      </div>
+
+      <!-- Modal (keeping existing modal code) -->
+      <div *ngIf="showModal" class="modal-overlay" (click)="closeModal()">
+        <div class="modal-content" (click)="$event.stopPropagation()">
+          <button class="close-btn" (click)="closeModal()">✖</button>
+      
+          <h2>{{ selectedSection?.title }}</h2>
+      
+          <ng-container [ngSwitch]="selectedSection?.title">
+            <div *ngSwitchCase="'Exercise'">
+              <input type="text" placeholder="Add an exercise..." [(ngModel)]="inputValue" />
+            </div>
+            <div *ngSwitchCase="'Meals'">
+              <input type="text" placeholder="Add a meal..." [(ngModel)]="inputValue" />
+            </div>
+            <div *ngSwitchCase="'Water Intake'">
+              <input type="number" placeholder="Number of glasses..." [(ngModel)]="inputValue" />
+            </div>
+            <div *ngSwitchCase="'Notes'">
+              <textarea placeholder="Write a note..." [(ngModel)]="inputValue"></textarea>
+            </div>
+          </ng-container>
+      
+          <div class="button-group">
+            <button class="clear-btn" (click)="clearInput()">Clear</button>
+            <button class="save-btn" (click)="saveModal()">Submit</button>
+          </div>
+        </div>
+      </div>
+      
+    </aside>
+  </div>
+</div>

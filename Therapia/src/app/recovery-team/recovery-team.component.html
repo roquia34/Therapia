@@ -1,0 +1,40 @@
+
+  
+
+<div class="recovery-team">
+    <div class="slider-container" >
+        <h2 class="heading">Recovery <span> Team</span></h2>
+    
+        <div #slider class="recovery-content">
+           <!-- عرض كل بطاقة باستخدام *ngFor  -->
+          <div *ngFor="let doctor of doctors" class="card mb-3 " >
+            <div class="row g-0">
+              <div class="col-md-6 ">
+                <img [src]="doctor.image" class="img-fluid rounded-start" alt="...">
+                <div class="social">
+                  <a href="#"><i class="fab fa-facebook-f"></i></a>
+                  <!-- <a href="#"><i  class="fab fa-instagram"></i></a> -->
+                  <a href="#"><i class="fab fa-linkedin-in"></i></a>
+              </div>
+              </div>
+              
+              <div class="col-md-6">
+                <div class="card-body">
+                  <h5 class="card-title">{{ doctor.name }}</h5>
+                  <p class="card-text">{{ doctor.description }}</p>
+                  
+   
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      
+         <!-- أزرار الانتقال  -->
+        <button class=" arrow left " (click)="prevSlide()">&#60;</button>
+        <button class=" arrow right" (click)="nextSlide()">&#62;</button>
+      </div>
+</div>
+ 
+
+    

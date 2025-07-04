@@ -1,0 +1,167 @@
+<div class="profile-edit-container">
+  <div class="profile-header">
+    <button class="back-btn">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M19 12H5M12 19L5 12L12 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+    <h1 class="profile-title">Edit Profile</h1>
+    <button class="save-btn">Save</button>
+  </div>
+
+  <div class="profile-avatar-section">
+    <div class="avatar-container">
+      <div class="avatar-image">
+        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face" alt="Profile Picture">
+        <button class="avatar-edit-btn">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="12" cy="13" r="4" stroke="currentColor" stroke-width="2"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+    <p class="avatar-hint">Tap to change your profile picture</p>
+  </div>
+
+  <div class="profile-form">
+    <div class="form-section">
+      <h2 class="section-title">Personal Information</h2>
+      
+      <div class="form-group">
+        <label for="firstName" class="form-label">First Name</label>
+        <input type="text" id="firstName" class="form-input" value="John" placeholder="Enter your first name">
+      </div>
+
+      <div class="form-group">
+        <label for="lastName" class="form-label">Last Name</label>
+        <input type="text" id="lastName" class="form-input" value="Doe" placeholder="Enter your last name">
+      </div>
+
+      <div class="form-group">
+        <label for="email" class="form-label">Email Address</label>
+        <input type="email" id="email" class="form-input" value="john.doe@example.com" placeholder="Enter your email">
+      </div>
+
+      <div class="form-group">
+        <label for="phone" class="form-label">Phone Number</label>
+        <input type="tel" id="phone" class="form-input" value="+1 (555) 123-4567" placeholder="Enter your phone number">
+      </div>
+    </div>
+
+    <div class="form-section">
+      <h2 class="section-title">Account Details</h2>
+      
+      <div class="form-group">
+        <label for="username" class="form-label">Username</label>
+        <input type="text" id="username" class="form-input" value="johndoe" placeholder="Enter your username">
+      </div>
+
+      <div class="form-group">
+        <label for="bio" class="form-label">Bio</label>
+        <textarea id="bio" class="form-textarea" rows="4" placeholder="Tell us a bit about yourself...">Software developer passionate about creating amazing user experiences.</textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="website" class="form-label">Website</label>
+        <input type="url" id="website" class="form-input" value="https://johndoe.dev" placeholder="Enter your website URL">
+      </div>
+    </div>
+
+    <div class="form-section">
+      <h2 class="section-title">Location</h2>
+      
+      <div class="form-group">
+        <label for="country" class="form-label">Country</label>
+        <select id="country" class="form-select">
+          <option value="">Select Country</option>
+          <option value="us" selected>United States</option>
+          <option value="ca">Canada</option>
+          <option value="uk">United Kingdom</option>
+          <option value="au">Australia</option>
+          <option value="de">Germany</option>
+          <option value="fr">France</option>
+          <option value="jp">Japan</option>
+          <option value="eg">Egypt</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="city" class="form-label">City</label>
+        <input type="text" id="city" class="form-input" value="New York" placeholder="Enter your city">
+      </div>
+    </div>
+
+    <div class="form-section">
+      <h2 class="section-title">Preferences</h2>
+      
+      <div class="form-group">
+        <label for="language" class="form-label">Language</label>
+        <select id="language" class="form-select">
+          <option value="en" selected>English</option>
+          <option value="ar">العربية</option>
+          <option value="es">Español</option>
+          <option value="fr">Français</option>
+          <option value="de">Deutsch</option>
+          <option value="ja">日本語</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="timezone" class="form-label">Timezone</label>
+        <select id="timezone" class="form-select">
+          <option value="">Select Timezone</option>
+          <option value="EST" selected>Eastern Standard Time (EST)</option>
+          <option value="PST">Pacific Standard Time (PST)</option>
+          <option value="GMT">Greenwich Mean Time (GMT)</option>
+          <option value="CET">Central European Time (CET)</option>
+          <option value="JST">Japan Standard Time (JST)</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <h2 class="section-title">Notifications</h2>
+      
+      <div class="toggle-group">
+        <div class="toggle-item">
+          <div class="toggle-info">
+            <label class="toggle-label">Email Notifications</label>
+            <p class="toggle-description">Receive notifications via email</p>
+          </div>
+          <label class="toggle-switch">
+            <input type="checkbox" checked>
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+
+        <div class="toggle-item">
+          <div class="toggle-info">
+            <label class="toggle-label">Push Notifications</label>
+            <p class="toggle-description">Receive push notifications on your device</p>
+          </div>
+          <label class="toggle-switch">
+            <input type="checkbox" checked>
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+
+        <div class="toggle-item">
+          <div class="toggle-info">
+            <label class="toggle-label">Marketing Communications</label>
+            <p class="toggle-description">Receive promotional emails and updates</p>
+          </div>
+          <label class="toggle-switch">
+            <input type="checkbox">
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <button class="btn-secondary" type="button">Cancel</button>
+    <button class="btn-primary" type="submit">Save Changes</button>
+  </div>
+</div>

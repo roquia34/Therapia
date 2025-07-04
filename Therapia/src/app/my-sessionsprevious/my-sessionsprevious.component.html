@@ -1,0 +1,14 @@
+<ng-container *ngIf="activeTab === 'previous'">
+    <ng-container *ngIf="previousSessions.length > 0; else noPrevious">
+      <div *ngFor="let session of previousSessions" class="session-card">
+        <p>{{ session.date }} - {{ session.title }}</p>
+      </div>
+    </ng-container>
+    <ng-template #noPrevious>
+      <div class="no-sessions-box">
+        <p class="no-sessions">You have no previous sessions.</p>
+        <button class="book-now" (click)="goToBooking()">Book now</button>
+      </div>
+    </ng-template>
+  </ng-container>
+  

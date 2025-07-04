@@ -1,0 +1,280 @@
+<div class="therapists-page">
+  <!-- Ready Now Section -->
+  <div class="ready-now-container" *ngIf="availableNowCount > 0">
+    <div class="ready-now-box">
+      <div class="left-side">
+        <h2>If you need to talk now, we are here to help you</h2>
+        <div class="info">
+          <div class="avatars-group">
+            <img *ngFor="let therapist of availableTherapistsList"
+            [src]="therapist.imageUrl"
+            [alt]="therapist.name"
+            class="therapist-avatar" />
+          </div>
+          <span class="status">
+            <span class="green-dot"></span>
+            {{ availableNowCount }} therapists are ready to start now within 15 mins
+          </span>
+        </div>
+        
+        
+      </div>
+      <div class="right-side">
+        <button class="explore-btn" (click)="showAvailableTherapists()">Explore</button>
+       </div>
+    </div>
+  </div>
+  
+  <!-- Main Therapists Section -->
+  <div class="therapists-main-container">
+    <h1 class="page-title">Our Therapists</h1>
+
+    <div class="breadcrumb">
+      <a href="/">Home</a> &gt; Therapists list
+    </div>
+
+    <div class="search-sort-bar">
+      <input type="text" class="search-input" placeholder="Therapist Name or Title" />
+      <select class="sort-select">
+        <option disabled selected>Sort by</option>
+        <option>Fees (Low To High)</option>
+        <option>Fees (High To Low)</option>
+      </select>
+    </div>
+
+    <div class="content">
+      <!-- Filters -->
+      <!-- <div class="filters">
+        <h2>Filters</h2>
+        <form>
+          <div class="filter-group">
+            <h3><i class="fas fa-calendar-alt"></i> Availability</h3>
+            <div class="checkbox-group">
+              <label><input type="checkbox" /> Today</label>
+              <label><input type="checkbox" /> This Week</label>
+              <label><input type="checkbox" /> Online</label>
+              <label><input type="checkbox" /> Specific date or range</label>
+            </div>
+            <input type="date" />
+          </div>
+
+          <div class="filter-group">
+            <h3><i class="fas fa-heart"></i> Area of Interest</h3>
+            <select>
+              <option disabled selected>Select Specialization</option>
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <h3><i class="fas fa-clock"></i> Duration</h3>
+            <div class="checkbox-group">
+              <label><input type="radio" name="duration" /> All</label>
+              <label><input type="radio" name="duration" /> 30 Min</label>
+              <label><input type="radio" name="duration" /> 60 Min</label>
+            </div>
+          </div>
+
+          <div class="filter-group">
+            <h3><i class="fas fa-user"></i> Therapist Gender</h3>
+            <div class="checkbox-group">
+              <label><input type="radio" name="gender" /> All</label>
+              <label><input type="radio" name="gender" /> Male</label>
+              <label><input type="radio" name="gender" /> Female</label>
+            </div>
+          </div>
+
+          <div class="filter-group">
+            <h3><i class="fas fa-star"></i> Ratings</h3>
+            <div class="stars">★ ☆ ☆ ☆ ☆</div>
+          </div>
+
+          <div class="filter-group">
+            <h3><i class="fas fa-globe"></i> Language & Country</h3>
+            <select>
+              <option disabled selected>Select Language</option>
+            </select>
+            <select>
+              <option disabled selected>Select Country</option>
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <h3><i class="fas fa-money-bill-wave"></i> Session Fees <span>EGP</span></h3>
+            <div class="range">
+              <span>150</span> - <span>575</span>
+              <input type="range" min="150" max="575" />
+            </div>
+          </div>
+
+          <div class="filter-group">
+            <h3><i class="fas fa-notes-medical"></i> Can prescribe medication</h3>
+            <div class="checkbox-group">
+              <label><input type="checkbox" /> Psychiatrist (allowed)</label>
+              <label><input type="checkbox" /> Psychologist (Not allowed)</label>
+            </div>
+          </div>
+
+          <div class="filter-group">
+            <h3><i class="fas fa-tags"></i> Accept promocodes</h3>
+            <div class="checkbox-group">
+              <label><input type="radio" name="promocode" /> Yes</label>
+              <label><input type="radio" name="promocode" /> No</label>
+            </div>
+          </div>
+
+          <div class="filter-group">
+            <h3><i class="fas fa-gift"></i> Accept bundles</h3>
+            <div class="checkbox-group">
+              <label><input type="radio" name="bundles" /> Yes</label>
+              <label><input type="radio" name="bundles" /> No</label>
+            </div>
+          </div>
+
+          <button type="reset" class="reset-btn">Reset Filter</button>
+        </form>
+      </div> -->
+
+      <div class="filters">
+        <h2>Filters</h2>
+        <form>
+          <div class="filter-group">
+            <h3><i class="fas fa-clock"></i> Availability</h3>
+            <div class="checkbox-group">
+              <label><input type="checkbox" /> Today</label>
+              <label><input type="checkbox" /> This Week</label>
+              <label><input type="checkbox" checked /> Online</label>
+            </div>
+          </div>
+      
+          <div class="filter-group">
+            <h3><i class="fas fa-calendar"></i> Specific date or range</h3>
+            <input type="date" class="date-picker" />
+          </div>
+      
+          <div class="filter-group">
+            <h3><i class="fas fa-heart"></i> Areas of interest</h3>
+            <select class="select-field">
+              <option disabled selected>Select Specialization</option>
+            </select>
+          </div>
+      
+          <div class="filter-group">
+            <h3><i class="fas fa-clock"></i> Duration</h3>
+            <div class="radio-group">
+              <label><input type="radio" name="duration" checked /> All</label>
+              <label><input type="radio" name="duration" /> 30 Min</label>
+              <label><input type="radio" name="duration" /> 60 Mins</label>
+            </div>
+          </div>
+      
+          <div class="filter-group">
+            <h3><i class="fas fa-user"></i> Therapist Gender</h3>
+            <div class="radio-group">
+              <label><input type="radio" name="gender" checked /> All</label>
+              <label><input type="radio" name="gender" /> Male</label>
+              <label><input type="radio" name="gender" /> Female</label>
+            </div>
+          </div>
+      
+          <div class="filter-group">
+            <h3><i class="fas fa-star"></i> Ratings</h3>
+            <div class="stars">
+              ★ ☆ ☆ ☆ ☆
+            </div>
+          </div>
+      
+          <div class="filter-group">
+            <h3><i class="fas fa-globe"></i> Language & Country</h3>
+            <select class="select-field">
+              <option disabled selected>Select Language</option>
+            </select>
+            <select class="select-field">
+              <option disabled selected>Select Country</option>
+            </select>
+          </div>
+      
+          <div class="filter-group">
+            <h3><i class="fas fa-money-bill-wave"></i> Session Fees <span>EGP</span></h3>
+            <div class="range">
+              <span>140</span>
+              <input type="range" min="140" max="4700" value="4700" />
+              <span>4700</span>
+            </div>
+          </div>
+      
+          <div class="filter-group">
+            <h3><i class="fas fa-notes-medical"></i> Can prescribe medication</h3>
+            <div class="checkbox-group">
+              <label><input type="checkbox" /> Psychiatrist (allowed)</label>
+              <label><input type="checkbox" /> Psychologist (Not allowed)</label>
+            </div>
+          </div>
+      
+          <div class="filter-group">
+            <h3><i class="fas fa-tags"></i> Accept promocodes</h3>
+            <div class="radio-group">
+              <label><input type="radio" name="promocode" /> Yes</label>
+              <label><input type="radio" name="promocode" /> No</label>
+            </div>
+          </div>
+      
+          <div class="filter-group">
+            <h3><i class="fas fa-gift"></i> Accept bundles</h3>
+            <div class="radio-group">
+              <label><input type="radio" name="bundles" /> Yes</label>
+              <label><input type="radio" name="bundles" /> No</label>
+            </div>
+          </div>
+      
+          <button type="reset" class="reset-btn">Reset Filter</button>
+        </form>
+      </div>
+      
+      <!-- Therapists List -->
+       <div class="therapists-list">
+        <div class="therapist-card" *ngFor="let therapist of filteredTherapists" >
+          <div class="card-header">
+            <img [src]="therapist.imageUrl" alt="Therapist Image" class="doctor-img" />
+
+           <div class="doctor-info">
+              <h3 class="doctor-name">{{ therapist.name }}</h3>
+              <p class="doctor-title">{{ therapist.specialty }}</p>
+              <div class="doctor-sessions">
+                <i class="fas fa-video"></i> 
+              </div>
+              <div class="doctor-rating">
+                <span class="stars">
+                  <span *ngFor="let star of [1,2,3,4,5]" [class.filled]="star <= Math.round(therapist.rating)">★</span>
+                </span>
+                <span class="reviews">({{ therapist.reviewsCount }} Reviews)</span>
+              </div>
+            </div>
+          </div>
+      
+          <div class="card-body">
+            <div class="interests">
+              <span class="tag" *ngFor="let interest of therapist.interests">{{ interest }}</span>
+            </div>
+      
+            <div class="appointment">
+              <i class="fas fa-calendar-alt"></i> {{ therapist.nearestAppointment }}
+            </div>
+      
+            <div class="pricing">
+              {{ therapist.sessionPrice }} EGP <span class="num-time">/ 60 min</span>
+            </div>
+      
+            <div class="card-actions">
+              <button class="view-profile">View Profile</button>
+              <button class="book-now">Book Now</button>
+            </div>
+          </div>
+        </div>
+      </div> 
+       
+     
+      
+      
+    </div>
+  </div>
+</div> 

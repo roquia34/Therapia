@@ -1,0 +1,30 @@
+[
+    {
+      "id": 1,
+      "name": "Dr. Sara Ahmed",
+      "imageUrl": "https://randomuser.me/api/portraits/women/44.jpg",
+      "specialty": "Anxiety Specialist",
+      "sessionPrice": 300,
+      "reviewsCount": 120,
+      "nextAvailableInMinutes": 10
+    },
+    {
+      "id": 2,
+      "name": "Dr. Omar Khaled",
+      "imageUrl": "https://randomuser.me/api/portraits/men/45.jpg",
+      "specialty": "Depression Specialist",
+      "sessionPrice": 350,
+      "reviewsCount": 98,
+      "nextAvailableInMinutes": 5
+    },
+    {
+      "id": 3,
+      "name": "Dr. Mona Saeed",
+      "imageUrl": "https://randomuser.me/api/portraits/women/46.jpg",
+      "specialty": "Family Therapist",
+      "sessionPrice": 400,
+      "reviewsCount": 87,
+      "nextAvailableInMinutes": 25
+    }
+  ]
+  

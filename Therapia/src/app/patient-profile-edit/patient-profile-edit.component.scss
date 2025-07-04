@@ -1,0 +1,551 @@
+// Variables
+$primary-color: #667eea;
+$primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+$secondary-color: #6f60bf;
+$success-color: #6f60bf;
+$error-color: #e53e3e;
+$text-primary: #2d3748;
+$text-secondary: #4a5568;
+$text-muted: #a0aec0;
+$bg-light: #f8fafc;
+$bg-white: #ffffff;
+$border-color: #e8ecf4;
+$shadow-light: rgba(0, 0, 0, 0.1);
+$shadow-medium: rgba(0, 0, 0, 0.15);
+
+// Mixins
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin transition($property: all, $duration: 0.3s, $timing: cubic-bezier(0.4, 0, 0.2, 1)) {
+  transition: $property $duration $timing;
+}
+
+@mixin glass-effect {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+@mixin button-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 16px 24px;
+  border: none;
+  border-radius: 16px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  @include transition();
+  outline: none;
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+  
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    @include transition(all, 0.6s);
+  }
+  
+  &:active::before {
+    width: 300px;
+    height: 300px;
+  }
+}
+
+// Angular Component Styles - No global resets needed
+
+// Container
+.profile-container {
+  @include flex-center;
+  min-height: 100vh;
+  padding: 20px;
+  margin-top: px;
+  margin-bottom: 120px;
+ 
+}
+
+// Profile Card
+.profile-card {
+  @include glass-effect;
+  border-radius: 24px;
+  padding: 40px;
+  width: 100%;
+  max-width: 800px;
+  box-shadow: 0 20px 40px $shadow-light;
+  position: relative;
+  overflow: hidden;
+  animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: #6f60bf;
+    background-size: 300% 100%;
+    animation: shimmer 3s ease-in-out infinite;
+  }
+}
+
+// Success Message
+.success-message {
+  display: none;
+  @include flex-center;
+  gap: 12px;
+  background: linear-gradient(135deg, $success-color, darken($success-color, 10%));
+  color: white;
+  padding: 16px 20px;
+  border-radius: 16px;
+  margin-bottom: 24px;
+  font-weight: 500;
+  animation: slideDown 0.5s ease;
+  
+  .success-icon {
+    font-size: 20px;
+  }
+  
+  &.show {
+    display: flex;
+  }
+}
+
+// Avatar Section
+.avatar-section {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.avatar-container {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 16px;
+}
+
+.avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+  @include flex-center;
+  cursor: pointer;
+  @include transition();
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  position: relative;
+  overflow: hidden;
+  
+  .avatar-placeholder {
+    font-size: 48px;
+    color: $bg-white;
+    @include transition();
+  }
+  
+  .avatar-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    @include flex-center;
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
+    opacity: 0;
+    @include transition();
+  }
+  
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 30px rgba(255, 154, 158, 0.4);
+    
+    .avatar-overlay {
+      opacity: 1;
+    }
+  }
+  
+  &::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transform: rotate(45deg);
+    @include transition(all, 0.6s);
+    opacity: 0;
+  }
+  
+  &:hover::after {
+    animation: shine 0.6s ease-in-out;
+    opacity: 1;
+  }
+}
+
+.upload-hint {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: $secondary-color;
+  color: white;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  @include flex-center;
+  cursor: pointer;
+  @include transition();
+  border: 3px solid white;
+  box-shadow: 0 4px 12px rgba(78, 205, 196, 0.3);
+  
+  &:hover {
+    background: darken($secondary-color, 10%);
+    transform: scale(1.1);
+  }
+}
+
+.profile-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: $text-primary;
+  margin-bottom: 8px;
+  background: $primary-gradient;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.profile-subtitle {
+  color: $text-secondary;
+  font-size: 16px;
+  opacity: 0.8;
+}
+
+// Form Styles
+.profile-form {
+  .form-group {
+    margin-bottom: 24px;
+  }
+  
+  .form-label {
+    display: block;
+    font-weight: 600;
+    color: $text-primary;
+    margin-bottom: 8px;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+}
+
+// Input Wrapper
+.input-wrapper,
+.select-wrapper,
+.textarea-wrapper {
+  position: relative;
+  
+  .input-icon,
+  .select-icon,
+  .textarea-icon {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: $text-muted;
+    @include transition();
+    pointer-events: none;
+  }
+  
+  .textarea-icon {
+    top: 16px;
+    transform: none;
+  }
+}
+
+// Form Inputs
+.form-input,
+.form-select,
+.form-textarea {
+  width: 100%;
+  padding: 16px 50px 16px 20px;
+  border: 2px solid $border-color;
+  border-radius: 16px;
+  font-size: 16px;
+  background: rgba($bg-light, 0.8);
+  @include transition();
+  outline: none;
+  color: $text-primary;
+  font-family: inherit;
+  
+  &::placeholder {
+    color: $text-muted;
+    font-weight: 400;
+  }
+  
+  &:focus {
+    border-color: $primary-color;
+    background: $bg-white;
+    box-shadow: 0 0 0 4px rgba($primary-color, 0.1);
+    transform: translateY(-2px);
+    
+    + .input-icon,
+    + .select-icon,
+    + .textarea-icon {
+      color: $primary-color;
+    }
+  }
+  
+  &:valid:not(:placeholder-shown) {
+    border-color: $success-color;
+    
+    + .input-icon,
+    + .select-icon,
+    + .textarea-icon {
+      color: $success-color;
+    }
+  }
+  
+  &:invalid:not(:placeholder-shown):not(:focus) {
+    border-color: $error-color;
+    animation: shake 0.5s ease-in-out;
+    
+    + .input-icon,
+    + .select-icon,
+    + .textarea-icon {
+      color: $error-color;
+    }
+  }
+}
+
+.form-select {
+  appearance: none;
+  cursor: pointer;
+  background-image: none;
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 100px;
+  padding-top: 16px;
+  padding-right: 50px;
+}
+
+// Form Actions
+.form-actions {
+  display: flex;
+  gap: 16px;
+  margin-top: 32px;
+  
+  @media (max-width: 480px) {
+    flex-direction: column;
+  }
+}
+
+// Error message styles
+.error-message {
+  color: $error-color;
+  font-size: 12px;
+  margin-top: 4px;
+  padding-left: 4px;
+  animation: slideDown 0.3s ease;
+  font-weight: 500;
+}
+
+// Invalid field styling
+.form-input.invalid,
+.form-select.invalid,
+.form-textarea.invalid {
+  border-color: $error-color;
+  background-color: rgba($error-color, 0.05);
+  
+  &:focus {
+    border-color: $error-color;
+    box-shadow: 0 0 0 4px rgba($error-color, 0.1);
+  }
+  
+  + .input-icon,
+  + .select-icon,
+  + .textarea-icon {
+    color: $error-color;
+  }
+}
+
+// Buttons
+.btn {
+  @include button-base;
+  
+  &-primary {
+    background: $primary-gradient;
+    color: white;
+    box-shadow: 0 8px 20px rgba($primary-color, 0.3);
+    flex: 2;
+    
+    &:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 24px rgba($primary-color, 0.4);
+    }
+    
+    &:active {
+      transform: translateY(0);
+    }
+  }
+  
+  &-secondary {
+    background: rgba($bg-light, 0.8);
+    color: $text-secondary;
+    border: 2px solid $border-color;
+    flex: 1;
+    
+    &:hover:not(:disabled) {
+      background: $bg-white;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px $shadow-light;
+    }
+  }
+}
+
+// Button Loader
+.btn-loader {
+  display: none;
+  
+  .spinner {
+    width: 20px;
+    height: 20px;
+    border: 2px solid transparent;
+    border-top: 2px solid currentColor;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+  
+  &.show {
+    display: block;
+  }
+}
+
+.btn-icon {
+  @include transition();
+}
+
+// Loading State
+.btn.loading {
+  .btn-loader {
+    display: block;
+  }
+  
+  .btn-text,
+  .btn-icon {
+    display: none;
+  }
+}
+
+// Animations
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shimmer {
+  0% { background-position: -300% 0; }
+  100% { background-position: 300% 0; }
+}
+
+@keyframes shine {
+  0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+  100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+// Responsive Design
+@media (max-width: 768px) {
+  .profile-card {
+    padding: 24px;
+    margin: 10px;
+    max-width: 100%;
+  }
+  
+  .avatar {
+    width: 100px;
+    height: 100px;
+    
+    .avatar-placeholder {
+      font-size: 40px;
+    }
+  }
+  
+  .profile-title {
+    font-size: 24px;
+  }
+  
+  .form-input,
+  .form-select,
+  .form-textarea {
+    font-size: 16px; // Prevents zoom on iOS
+  }
+}
+
+@media (max-width: 480px) {
+  .profile-container {
+    padding: 10px;
+  }
+  
+  .profile-card {
+    padding: 20px;
+  }
+  
+  .upload-hint {
+    width: 32px;
+    height: 32px;
+  }
+}
