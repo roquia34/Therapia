@@ -1,0 +1,34 @@
+<div class="customer-growth">
+  <div class="header">
+    <div>
+      <h2>Customer Growth</h2>
+      <p>Track customer</p>
+    </div>
+    <!-- <div class="filter">Today ⌄</div> -->
+     <select class="filter" [(ngModel)]="selectedMonth" (change)="onMonthChange()">
+    <option *ngFor="let month of months" [value]="month">{{ month }}</option>
+  </select>
+  </div>
+
+  <div class="bubble-chart">
+    <div
+      *ngFor="let bubble of bubbles"
+      class="bubble"
+      [style.width.px]="50 + (bubble.value / max) * 80"
+      [style.height.px]="50 + (bubble.value / max) * 80"
+    >
+      {{ bubble.value }}
+    </div>
+  </div>
+
+  <div class="countries">
+    <div class="country" *ngFor="let country of countries">
+      <!-- <span class="flag">{{ country }}</span> -->
+      <span class="name">{{ country.name }}</span>
+      <div class="bar-container">
+        <div class="bar" [style.width.%]="(country.value / max) * 100"></div>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -46,6 +46,7 @@ import { MySessionProfileEditComponent } from './my-session-profile-edit/my-sess
 import { PatientMenuComponent } from './patient-menu/patient-menu.component';
 import { MySessionDashbordComponent } from './my-session-dashbord/my-session-dashbord.component';
 import { MySessionGuidelineComponent } from './my-session-guideline/my-session-guideline.component';
+import { ProffesionalsBookComponent } from './proffesionals-book/proffesionals-book.component';
 
 
 
@@ -87,7 +88,8 @@ import { MySessionGuidelineComponent } from './my-session-guideline/my-session-g
     MySessionProfileEditComponent,
     PatientMenuComponent,
     MySessionDashbordComponent,
-    MySessionGuidelineComponent
+    MySessionGuidelineComponent,
+    ProffesionalsBookComponent
   ],
   imports: [
     BrowserModule,

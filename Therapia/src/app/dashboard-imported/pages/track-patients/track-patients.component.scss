@@ -1,0 +1,29 @@
+.dashboard {
+  display: flex;
+   
+
+  .main-content {
+    flex: 1;
+    padding: 2rem;
+     margin-top: 120px;
+     margin-bottom: 40px;
+  }
+
+  .main-columns {
+    display: grid;
+    grid-template-columns: 1fr ; // عمود في النص وعمود على اليمين
+    gap: 2rem;
+  }
+
+  // .middle-column {
+  //   display: flex;
+  //   flex-direction: column;
+  //   gap: 2rem;
+  // }
+
+  // .right-column {
+  //   display: flex;
+  //   flex-direction: column;
+  //   gap: 2rem;
+  // }
+}

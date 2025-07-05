@@ -1,0 +1,118 @@
+.cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); // خلي الكروت 2 ف كل سطر
+  gap: 1.5rem;
+
+
+
+  .card {
+    padding: 1.5rem;
+    border-radius: 1.2rem;
+    position: relative;
+    background: #fff;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+    color: #333;
+
+    .icon {
+      font-size: 1.2rem;
+      background: #f0f0f5;
+      padding: 0.7rem;
+      border-radius: 0.8rem;
+      width: fit-content;
+      margin-bottom: 1rem;
+    }
+    .percentage {
+      position: absolute;
+      top: 1.2rem;
+      right: 1.2rem;
+      font-size: 0.75rem;
+      font-weight: bold;
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+      background: #e0ffe5;
+      color: #22c55e;
+
+      &.red {
+        background: #ffe0e0;
+        color: #ef4444;
+      }
+    }
+
+    h4 {
+      margin: 0.5rem 0 0.2rem;
+      font-size: 0.95rem;
+      color: #888;
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin: 0.2rem 0;
+    }
+
+    p {
+      font-size: 0.8rem;
+      color: #999;
+      margin: 0;
+    }
+    input{
+      border: 2px solid #878686;
+      border-radius: 5px;
+      margin-bottom: 5px;
+
+    }
+    button{
+      background: linear-gradient(120deg, #e2e5f5, #f2f2f3);
+      color: rgb(0, 0, 0);
+      border: 2px solid #878686;
+      border-radius: 5px;
+      margin-left: 5px;
+
+    }
+
+    &.blue {
+      background: linear-gradient(135deg, #3a7bd5, #00d2ff);
+      color: white;
+
+      .icon {
+        background: rgba(255, 255, 255, 0.15);
+        color: white;
+      }
+
+      h4, p {
+        color: #e0f2ff;
+      }
+
+      .percentage {
+        background: rgba(255, 255, 255, 0.15);
+        color: #fff;
+      }
+      #btn {
+        margin-top: 5px;
+        margin-left: -5px;
+        height: 30px;
+        background: linear-gradient(135deg, #3a7bd5, #00d2ff);
+        color: #fff;
+        border: 2px solid #00d2ff;
+        border-radius: 10px;
+        a{
+          // display: flex;
+        align-items: center;
+        gap: 12px;
+        text-decoration: none;
+        padding: 10px;
+        border-radius: 8px;
+        color: #ffffff;
+        font-size: 14px;
+        transition: all 0.2s ease;
+        }
+      &:hover,
+      &.active {
+        background-color: #f0f4ff;
+        color: #2f2f2f;
+      }
+      }
+
+    }
+  }
+}

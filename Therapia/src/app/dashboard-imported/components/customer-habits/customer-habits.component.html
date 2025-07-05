@@ -1,0 +1,42 @@
+<!-- <div class="customer-habits">
+  <h2>Customer Habits</h2>
+  <p>Track your customer habits</p>
+
+  <div class="legend">
+    <span class="dot product"></span> Product
+    <span class="dot sales"></span> Sales
+  </div>
+
+  <div class="bar-chart">
+    <div class="bar-group" *ngFor="let month of months; let i = index">
+      <div class="bar product" [style.height.%]="productData[i] / maxValue * 100"></div>
+      <div class="bar sales" [style.height.%]="salesData[i] / maxValue * 100"></div>
+      <span class="month">{{ month }}</span>
+    </div>
+  </div>
+</div> -->
+
+<div class="calendar-widget">
+  <div class="header">
+    <h3>My Calendar</h3>
+    <span>April</span>
+  </div>
+
+  <div class="days">
+    <div
+      *ngFor="let d of days"
+      [class.active]="d === selectedDay"
+      (click)="selectDay(d)"
+    >
+      {{ d }}
+    </div>
+  </div>
+
+  <ul class="appointments">
+  <li *ngFor="let appointment of appointmentsForSelectedDay">
+    <strong class="time" [ngClass]="appointment.color">{{ appointment.time }}</strong>
+    {{ appointment.text }}
+  </li>
+</ul>
+
+</div>

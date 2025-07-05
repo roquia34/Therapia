@@ -1,0 +1,46 @@
+<form [formGroup]="profileForm" (ngSubmit)="onSubmit()" class="profile-form">
+  <div class="image-upload">
+    <label for="imageInput" class="image-preview">
+      <img *ngIf="imageUrl; else placeholder" [src]="imageUrl" alt="Profile" />
+      <ng-template #placeholder>
+        <span class="placeholder-text">+</span>
+      </ng-template>
+    </label>
+    <input id="imageInput" type="file" (change)="onImageChange($event)" hidden />
+  </div>
+
+
+  <!-- <div class="profile-form"> -->
+    <input type="text" [(ngModel)]="name" placeholder="Full Name" required />
+    <input type="email" [(ngModel)]="email" placeholder="Email Address" required />
+    <textarea [(ngModel)]="bio" placeholder="Tell us about yourself" required></textarea>
+    <textarea [(ngModel)]="message" placeholder="Leave a message (optional)"></textarea>
+      <input formControlName="gender" placeholder="Gender" />
+  <input formControlName="city" placeholder="City" />
+  <input formControlName="yearsOfExperience" placeholder="Years of Experience" />
+  <input formControlName="specialized" placeholder="Specialized" />
+  <input formControlName="faculty" placeholder="Faculty" />
+  <input formControlName="certificates" placeholder="Certificates" />
+  <input formControlName="address" placeholder="Address" />
+  <textarea formControlName="about" placeholder="About"></textarea>
+  <input formControlName="facebook" placeholder="Facebook Link" />
+  <input formControlName="linkedin" placeholder="LinkedIn Link" />
+
+    <div class="buttons">
+      <button type="button" (click)="clear()">Clear</button>
+      <button type="button" (click)="submit()" [disabled]="!name || !email || !bio">
+        Submit
+      </button>
+    </div>
+  <!-- </div> -->
+
+
+  <!-- <input formControlName="name" placeholder="Name" /> -->
+
+
+  <!-- <div class="buttons">
+    <button type="button" (click)="onBack()">Back</button>
+    <button type="submit" [disabled]="!profileForm.valid" class="submit-btn">Submit</button>
+  </div> -->
+
+</form>

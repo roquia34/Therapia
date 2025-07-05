@@ -1,14 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-our-therapists',
   templateUrl: './our-therapists.component.html',
   styleUrls: ['./our-therapists.component.scss'],
-  
-  
 })
 export class OurTherapistsComponent implements OnInit {
   therapists: any[] = [];
@@ -16,10 +14,14 @@ export class OurTherapistsComponent implements OnInit {
   availableNowCount: number = 0;
   loading: boolean = true;
   filterForm!: FormGroup;
-  Math = Math; // حل مشكلة Math
+  Math = Math;
   availableTherapistsList: any[] = [];
 
-  constructor(private http: HttpClient, private fb: FormBuilder) {}
+  constructor(
+    private http: HttpClient,
+    private fb: FormBuilder,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.fetchTherapists();
@@ -33,12 +35,11 @@ export class OurTherapistsComponent implements OnInit {
         this.filteredTherapists = [...this.therapists];
         const availableTherapists = this.therapists.filter(t => t.nextAvailableInMinutes <= 15);
         this.availableNowCount = availableTherapists.length;
-        this.availableTherapistsList = availableTherapists.slice(0, 4); // خد أول ٤ بس
+        this.availableTherapistsList = availableTherapists.slice(0, 4);
         this.loading = false;
       });
   }
-  
-  
+
   initForm() {
     this.filterForm = this.fb.group({
       search: [''],
@@ -103,5 +104,9 @@ export class OurTherapistsComponent implements OnInit {
   showAvailableTherapists() {
     this.filteredTherapists = this.therapists.filter(t => t.nextAvailableInMinutes <= 15);
   }
-  
+
+ viewProfile() {
+  this.router.navigate(['/therapist-profile', 'default']);
+}
+
 }

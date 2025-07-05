@@ -1,0 +1,47 @@
+<div class="sidebar">
+  <div class="logo">THERPIA</div>
+
+  <ul class="menu">
+    <li>
+      <a routerLink="/dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+        <i class="material-icons">dashboard</i>
+        <span>Dashboard</span>
+      </a>
+    </li>
+    <li>
+      <a routerLink="/dashboard/track-patients" routerLinkActive="active">
+        <i class="material-icons">group</i>
+        <span>Track my patients</span>
+      </a>
+    </li>
+    <li>
+      <a routerLink="/dashboard/wallet" routerLinkActive="active">
+        <i class="material-icons">account_balance_wallet</i>
+        <span>My wallet</span>
+      </a>
+    </li>
+    <li>
+      <a routerLink="/dashboard/edit-profile" routerLinkActive="active">
+        <i class="material-icons">edit</i>
+        <span>Edit my profile</span>
+      </a>
+    </li>
+    <li>
+      <a routerLink="/dashboard/plans" routerLinkActive="active">
+        <i class="material-icons">assignment</i>
+        <span>Plans</span>
+      </a>
+    </li>
+  </ul>
+
+  <div class="upgrade-box">
+    <h4>My Own Plan</h4>
+    <p>50 min / call / 600PE</p>
+    <p>50 min / video / 800PE</p>
+    <button>
+      <a routerLink="/dashboard/plans" routerLinkActive="active">
+        <span>Upgrade Plan</span>
+      </a>
+    </button>
+  </div>
+</div>

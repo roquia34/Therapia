@@ -1,0 +1,73 @@
+<div class="cards">
+  <div class="card blue">
+    <div class="icon"><i class="fa fa-wallet"></i></div>
+    <div class="percentage green">+2.09%</div>
+    <h4>My Plane</h4>
+    <h2>Free</h2>
+    <button id="btn">
+      <a routerLink="/plans" routerLinkActive="active">
+        <span>Change Plane</span>
+      </a>
+    </button>
+  </div>
+
+  <div class="card">
+    <div class="icon"><i class="fa fa-shopping-cart"></i></div>
+    <div class="percentage green">+12.4%</div>
+    <h4>Sessions</h4>
+
+    <input type="text" placeholder="Price" [(ngModel)]="priceInput">
+    <input type="text" placeholder="Number of minutes" [(ngModel)]="minutesInput">
+
+    <div></div>
+    <label>
+      <input type="checkbox" class="checkbox-input" [(ngModel)]="videoChecked"> Video
+    </label>
+    <label>
+      <input type="checkbox" class="checkbox-input" [(ngModel)]="callChecked"> Call
+    </label>
+
+    <br>
+
+    <button (click)="clearInputs()" id="btn">Clear</button>
+    <button (click)="submitData()" id="btn">Submit</button>
+  </div>
+
+
+  <div class="card">
+    <div class="icon"><i class="fa fa-users"></i></div>
+    <div class="percentage red">-2.08%</div>
+    <h4>My Discounts</h4>
+
+    <input type="text" placeholder="Code" [(ngModel)]="discountCode">
+    <input type="text" placeholder="Percentage" [(ngModel)]="discountPercentage">
+    <br>
+
+    <button id="btn" (click)="submitDiscount()">Submit</button>
+    <button id="btn" (click)="disableDiscount()">Disable</button>
+  </div>
+
+
+  <div class="card">
+    <div class="icon"><i class="fa fa-box"></i></div>
+    <div class="percentage green">+12.1%</div>
+    <h3>My available time</h3>
+    <h4>Days</h4>
+
+    <div *ngFor="let day of daysList">
+      <label>
+        <input type="checkbox" class="checkbox-input" (change)="toggleDay(day, $event)"> {{ day }}
+      </label>
+    </div>
+
+    <div *ngFor="let item of availableTimes; let i = index" style="margin-top: 10px;">
+      <input type="text" placeholder="Session" [(ngModel)]="item.session">
+      <input type="text" placeholder="Time" [(ngModel)]="item.time">
+    </div>
+
+    <button (click)="addMoreTime()">Add More</button>
+    <button (click)="submitAvailableTimes()">Submit</button>
+  </div>
+
+
+</div>

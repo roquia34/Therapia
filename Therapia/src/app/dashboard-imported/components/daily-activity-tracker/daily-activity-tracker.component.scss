@@ -1,0 +1,98 @@
+.tracker-container {
+  display: flex;
+  padding: 20px;
+  background: #f8f9fc;
+  border-radius: 20px;
+  gap: 20px;
+  font-family: 'Inter', sans-serif;
+}
+
+.days-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+
+  .arrow {
+    font-size: 20px;
+    color: #888;
+    cursor: pointer;
+  }
+
+  .day-circle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid transparent;
+    cursor: pointer;
+
+    &.selected {
+      border-color: #4f46e5;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}
+
+.content-box {
+  flex: 1;
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+
+  .section {
+    margin-bottom: 20px;
+    // width: 800px;
+
+    h4 {
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: #444;
+    }
+
+    .info-box {
+      background: #f1f1f1;
+      padding: 10px;
+      border-radius: 8px;
+      color: #333;
+    }
+
+    textarea {
+      width: 100%;
+      padding: 10px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      resize: none;
+    }
+  }
+
+  .action-buttons {
+    display: flex;
+    justify-content: space-between;
+
+    button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+
+      &.clear {
+        background: #827cf5;
+        color: #fff;
+      }
+
+      &.submit {
+        background: #4f46e5;
+        color: #fff;
+      }
+    }
+  }
+}

@@ -1,0 +1,175 @@
+<div class="therapist-container">
+  <!-- Header section -->
+  <div class="header-section">
+    <div class="left-info">
+      <img src="assets/doctor.jpg" alt="Therapist Photo" class="profile-pic" />
+      <div class="info">
+        <h2>Dr. Ayoub Bouazizi</h2>
+        <p style="width: 800px;">
+          Bachelor of Medicine and Surgery, Master of Psychology from the University of Paris,
+          specializing in treating children and adolescents, in addition to all kinds of mental disorders and family
+          therapy.
+        </p>
+        <br>
+        <div class="actions">
+          <button class="icon-btn"><i class="fa-regular fa-message"></i> Messages</button>
+          <button class="icon-btn"><i class="fa-solid fa-phone"></i> Audio</button>
+          <button class="icon-btn"><i class="fa-solid fa-video"></i> Video</button>
+        </div>
+      </div>
+    </div>
+    <div class="start-now-container">
+      <button class="start-now">Start Now</button>
+    </div>
+  </div>
+  <!-- ----------------------------------------------------------------------------------------------------- -->
+  <!-- Tabs -->
+  <nav class="tabs">
+    <a [class.active]="selectedTab === 'about'" (click)="selectTab('about')">About the Therapist</a>
+    <a [class.active]="selectedTab === 'personal'" (click)="selectTab('personal')">Personal Information</a>
+    <a [class.active]="selectedTab === 'professional'" (click)="selectTab('professional')">Professional Information</a>
+    <a [class.active]="selectedTab === 'stats'" (click)="selectTab('stats')">Therapist Statistics</a>
+
+
+  </nav>
+
+  <!-- Dynamic Content -->
+  <div class="tab-content">
+    <div *ngIf="selectedTab === 'about'">
+      <h3>Bio of the therapist</h3>
+      <p>
+        Bachelor of Medicine and Surgery, Master of Psychology from the University of Paris,
+        specializing in treating children and adolescents, in addition to all kinds of mental disorders and family
+        therapy.
+      </p>
+    </div>
+
+    <div *ngIf="selectedTab === 'personal'">
+      <h3>Personal Information</h3>
+      <h2>Gender</h2>
+      <p>Male</p>
+      <hr />
+      <h2>Nationality</h2>
+      <p>Germany</p>
+      <hr />
+      <h2>Country</h2>
+      <p>Germany</p>
+    </div>
+
+    <div *ngIf="selectedTab === 'professional'">
+      <h3>Professional Information</h3>
+      <h2>Languages Spoken</h2>
+      <p>Arabic , German , English , French</p>
+      <hr />
+      <h2>Years of Experience</h2>
+      <p>7</p>
+      <hr />
+      <h2>Specialized Cases</h2>
+      <p>
+        Depression , Anxiety , Addiction , Confidence and self-esteem issues , Eating disorders , Borderline personality
+        disorders , Sexual issues
+      </p>
+    </div>
+
+    <div *ngIf="selectedTab === 'stats'">
+      <h3>Therapist Statistics</h3>
+      <h2>Total Sessions Given</h2>
+      <p>696 sessions</p>
+      <hr />
+      <h2>Number of Clients</h2>
+      <p>140 people received therapy from Dr.Ayoub Bouazizi</p>
+    </div>
+  </div>
+  <!-- ----------------------------------------------------------------------------------------------------- -->
+
+  <!-- Reviews -->
+  <div class="reviews">
+    <h3>Reviews (142)</h3>
+    <div class="rating-summary">
+      <div class="rating-number">5.0</div>
+      <div class="stars">★★★★★</div>
+      <p>from 142 reviews</p>
+      <div class="bars">
+        <div><span>5★</span><progress value="140" max="142"></progress></div>
+        <div><span>4★</span><progress value="1" max="142"></progress></div>
+        <div><span>3★</span><progress value="1" max="142"></progress></div>
+        <div><span>2★</span><progress value="0" max="142"></progress></div>
+        <div><span>1★</span><progress value="0" max="142"></progress></div>
+      </div>
+    </div>
+    <div class="review">
+      <h4>am*****</h4>
+      <div class="stars">★★★★★</div>
+      <p>
+        It was good to express my feelings and thoughts about the problem. Having an expert to validate the fear and
+        proposing a solution made it better. Thanks Dr. Ayoub
+      </p>
+      <span class="date">28 April 🇹🇳</span>
+    </div>
+    <div class="review">
+      <h4>am*****</h4>
+      <div class="stars">★★★★★</div>
+      <p>
+        It was good to express my feelings and thoughts about the problem. Having an expert to validate the fear and
+        proposing a solution made it better. Thanks Dr. Ayoub
+      </p>
+      <span class="date">28 April 🇹🇳</span>
+    </div>
+    <div class="review">
+      <h4>am*****</h4>
+      <div class="stars">★★★★★</div>
+      <p>
+        It was good to express my feelings and thoughts about the problem. Having an expert to validate the fear and
+        proposing a solution made it better. Thanks Dr. Ayoub
+      </p>
+      <span class="date">28 April 🇹🇳</span>
+    </div>
+    <span class="date">{{ todayDate }}</span>
+
+    <!-- Comments added by user -->
+    <div *ngFor="let c of comments" class="review">
+      <h4>{{ c.hidden ? 'Anonymous' : 'You' }}</h4>
+      <div class="stars">
+        <span *ngFor="let i of [].constructor(5); let index = index" [class.active]="index < c.rating">★</span>
+      </div>
+      <p>{{ c.text }}</p>
+      <span class="date">Now</span>
+    </div>
+
+  </div>
+
+
+
+  <!-- ----------------------------------------------------------------------------------------------------- -->
+
+  <!-- Comment Form -->
+  <div class="comment-box">
+    <h2>leave a comment</h2>
+
+    <label for="comment">comment</label>
+    <textarea id="comment" [(ngModel)]="commentText"></textarea>
+
+    <label>rate</label>
+    <div class="stars">
+      <span *ngFor="let star of stars; let i = index" (click)="setRating(i + 1)" [class.active]="i < rating">★</span>
+    </div>
+
+    <label>
+      hidden user name
+      <input type="checkbox" [(ngModel)]="hideName" />
+    </label>
+
+    <button (click)="submitComment()">Submit</button>
+  </div>
+
+  <!-- Comments List
+<div class="comment-list" *ngIf="comments.length > 0">
+  <h3>All Comments</h3>
+  <div *ngFor="let c of comments" class="comment-item">
+    <p class="text">💬 {{ c.hidden ? 'Anonymous' : 'You' }}: {{ c.text }}</p>
+    <div class="stars">
+      <span *ngFor="let i of [].constructor(5); let index = index"
+            [class.active]="index < c.rating">★</span>
+    </div>
+  </div>
+</div> -->

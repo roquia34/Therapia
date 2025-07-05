@@ -1,0 +1,57 @@
+<div class="tracker-container">
+  <!-- صور الأيام -->
+  <div class="days-column">
+    <div class="arrow up" (click)="prev()">↑</div>
+    <div
+      class="day-circle"
+      *ngFor="let day of visibleDays"
+      (click)="selectDay(day)"
+      [class.selected]="selectedDay === day"
+    >
+      <img [src]="'assets/images/day' + day + '.png'" alt="day image" />
+    </div>
+    <div class="arrow down" (click)="next()">↓</div>
+  </div>
+
+  <!-- البيانات -->
+  <div class="content-box">
+    <div class="section">
+      <h4>Exercise</h4>
+      <div class="info-box">{{ dayData[selectedDay].exercise }}</div>
+    </div>
+
+    <div class="section">
+      <h4>Duration</h4>
+      <div class="info-box">{{ dayData[selectedDay].duration }} min</div>
+    </div>
+
+    <div class="section">
+      <h4>Meals</h4>
+      <div class="info-box">
+        <ul>
+          <li *ngFor="let meal of dayData[selectedDay].meals">{{ meal }}</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <h4>Water</h4>
+      <div class="info-box">{{ dayData[selectedDay].water }} cups</div>
+    </div>
+
+    <div class="section">
+      <h4>Notes</h4>
+      <div class="info-box">{{ dayData[selectedDay].notes }}</div>
+    </div>
+
+    <div class="section">
+      <h4>Messages</h4>
+      <textarea [(ngModel)]="messages" rows="2" placeholder="Leave a message..."></textarea>
+    </div>
+
+    <div class="action-buttons">
+      <button class="clear" (click)="clear()">Clear</button>
+      <button class="submit" (click)="submit()">Submit</button>
+    </div>
+  </div>
+</div>

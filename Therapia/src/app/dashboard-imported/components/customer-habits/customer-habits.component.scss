@@ -1,0 +1,251 @@
+// // .customer-habits {
+// //   background: #1f1f2e;
+// //   border-radius: 1.5rem;
+// //   padding: 2rem;
+// //   margin-bottom: 2rem;
+// //   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+// //   color: #fff;
+
+// //   h2 {
+// //     margin-bottom: 0.2rem;
+// //     font-size: 1.6rem;
+// //     font-weight: 600;
+// //   }
+
+// //   p {
+// //     color: #aaa;
+// //     font-size: 0.95rem;
+// //     margin-bottom: 1rem;
+// //   }
+
+// //   .legend {
+// //     margin-bottom: 1rem;
+// //     font-size: 0.9rem;
+// //     display: flex;
+// //     gap: 1rem;
+// //     align-items: center;
+
+// //     .dot {
+// //       display: inline-block;
+// //       width: 10px;
+// //       height: 10px;
+// //       border-radius: 50%;
+// //       margin-right: 0.3rem;
+// //     }
+
+// //     .product {
+// //       background: #6366f1;
+// //     }
+
+// //     .sales {
+// //       background: #3b82f6;
+// //     }
+// //   }
+
+// //   .bar-chart {
+// //     display: flex;
+// //     gap: 1.2rem;
+// //     align-items: flex-end;
+// //     height: 200px;
+// //     padding: 1rem;
+// //     background: #2a2a3c;
+// //     border-radius: 1rem;
+
+// //     .bar-group {
+// //       display: flex;
+// //       flex-direction: column;
+// //       align-items: center;
+// //       gap: 0.3rem;
+
+// //       .bar {
+// //         width: 14px;
+// //         min-height: 40px;
+// //         border-radius: 4px;
+// //       }
+
+
+// //       .product {
+// //         background: #6366f1;
+// //       }
+
+// //       .sales {
+// //         background: #3b82f6;
+// //       }
+
+// //       .month {
+// //         font-size: 0.75rem;
+// //         color: #ccc;
+// //       }
+// //     }
+// //   }
+// // }
+
+// .calendar-widget {
+//   background: #fff;
+//   border-radius: 15px;
+//   padding: 20px;
+//   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+
+//   .header {
+//     display: flex;
+//     justify-content: space-between;
+//     align-items: center;
+//     margin-bottom: 15px;
+
+//     span {
+//       color: #4e6cff;
+//     }
+//   }
+
+//   .days {
+//     display: flex;
+//     gap: 10px;
+//     margin-bottom: 15px;
+
+//     div {
+//       background: #eee;
+//       padding: 8px;
+//       border-radius: 8px;
+//       width: 30px;
+//       text-align: center;
+//       cursor: pointer;
+
+//       &.active {
+//         background: #4e6cff;
+//         color: #fff;
+//       }
+//     }
+//   }
+
+//   // .appointments {
+//   //   list-style: none;
+//   //   padding: 0;
+//   //   font-size: 13px;
+
+//   //   li {
+//   //     margin-bottom: 8px;
+
+//   //     strong {
+//   //       color: #4e6cff;
+//   //       margin-right: 5px;
+//   //     }
+//   //   }
+//   // }
+//   .appointments {
+//   list-style: none;
+//   padding: 0;
+//   margin-top: 10px;
+
+//   li {
+//     margin-bottom: 8px;
+//     font-size: 15px;
+//     line-height: 1.6;
+
+//     strong.time {
+//       display: inline-block;
+//       width: 80px;
+//       font-weight: bold;
+//     }
+
+//     .orange {
+//       color: #e67234;
+//     }
+
+//     .green {
+//       color: #59d382;
+//     }
+
+//     .blue {
+//       color: #4ce1f2;
+//     }
+
+//     .pink {
+//       color: #e63493;
+//     }
+//   }
+// }
+
+
+
+// }
+
+.calendar-widget {
+  background: #fff;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+
+    span {
+      color: #4e6cff;
+    }
+  }
+
+  .days {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+
+    div {
+      background: #eee;
+      padding: 8px;
+      border-radius: 8px;
+      width: 30px;
+      text-align: center;
+      cursor: pointer;
+      transition: 0.3s ease;
+
+      &:hover {
+        background: #d6dbff;
+      }
+
+      &.active {
+        background: #4e6cff;
+        color: #fff;
+        font-weight: bold;
+      }
+    }
+  }
+
+  .appointments {
+    list-style: none;
+    padding: 0;
+    margin-top: 10px;
+
+    li {
+      margin-bottom: 8px;
+      font-size: 15px;
+      line-height: 1.6;
+      display: flex;
+      align-items: baseline;
+
+      strong.time {
+        display: inline-block;
+        width: 80px;
+        font-weight: bold;
+        margin-right: 5px;
+      }
+
+      .orange {
+        color: #e67234;
+      }
+
+      .green {
+        color: #59d382;
+      }
+
+      .blue {
+        color: #4ce1f2;
+      }
+
+      .pink {
+        color: #e63493;
+      }
+    }
+  }
+}

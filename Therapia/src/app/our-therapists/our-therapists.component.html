@@ -265,9 +265,11 @@
             </div>
       
             <div class="card-actions">
-              <button class="view-profile">View Profile</button>
-              <button class="book-now">Book Now</button>
-            </div>
+  <button class="view-profile" (click)="viewProfile()">View Profile</button>
+  <button class="book-now" [routerLink]="'/professionals-book'">Book Now</button>
+
+</div>
+
           </div>
         </div>
       </div> 

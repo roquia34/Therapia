@@ -1,0 +1,21 @@
+<div class="monthly-summary-card">
+  <div class="header">
+    <span class="month">Month / {{ month }}</span>
+    <span class="total-label">Total</span>
+    <span class="total-value">{{ total }} PE</span>
+  </div>
+
+  <div class="sessions-container">
+    <div class="session-card" *ngFor="let session of sessions">
+      <img [src]="session.image" alt="session avatar" class="avatar" />
+      <div class="session-details">
+        <p class="label">Session</p>
+        <ul>
+          <li><strong>Price:</strong> {{ session.price }}</li>
+          <li><strong>Type:</strong> {{ session.type }}</li>
+          <li><strong>Duration:</strong> {{ session.duration }}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

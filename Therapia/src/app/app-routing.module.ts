@@ -19,6 +19,9 @@ import { PatientProfileEditComponent } from './patient-profile-edit/patient-prof
 import { PatientMenuComponent } from './patient-menu/patient-menu.component';
 import { MySessionDashbordComponent } from './my-session-dashbord/my-session-dashbord.component';
 import { MySessionGuidelineComponent } from './my-session-guideline/my-session-guideline.component';
+import { DashboardComponent } from './dashboard-imported/pages/dashboard/dashboard.component';
+import { ProffesionalsBookComponent } from './proffesionals-book/proffesionals-book.component';
+
 
 const routes: Routes = [
   
@@ -45,7 +48,7 @@ const routes: Routes = [
       { path: 'profile_edit' , component: PatientProfileEditComponent},
     ]
   },
-
+{path:'professionals-book', component: ProffesionalsBookComponent},
 
   { path: 'physiotherapist-signup', component: SignupCompleteProfileComponent },
   { path: 'trainer-signup', component: SignupCompleteProfileComponent },
@@ -54,7 +57,70 @@ const routes: Routes = [
   { path: 'patient-menu' , component: PatientMenuComponent},
 
 
-   
+  {
+  path: 'dashboard',
+  children: [
+    { path: '', component: DashboardComponent },
+    {
+      path: 'plans',
+      loadComponent: () =>
+        import('./dashboard-imported/pages/plans/plans.component').then(
+          m => m.PlansComponent
+        )
+    },
+    {
+      path: 'wallet',
+      loadComponent: () =>
+        import('./dashboard-imported/pages/wallet/wallet.component').then(
+          m => m.WalletComponent
+        )
+    },
+    {
+      path: 'edit-profile',
+      loadComponent: () =>
+        import('./dashboard-imported/pages/edit-profile/edit-profile.component').then(m => m.EditProfileComponent),
+    },
+    {
+      path: 'track-patients',
+      loadComponent: () =>
+        import('./dashboard-imported/pages/track-patients/track-patients.component').then(m => m.TrackPatientsComponent),
+    }
+  ]
+}
+,
+
+   {
+  path: 'therapist-profile/:id',
+  loadComponent: () =>
+    import('./professional-imported/therapist-profile/therapist-profile.component')
+    .then(m => m.TherapistProfileComponent)
+},
+
+
+{
+  path: 'admin/:id',
+  children: [
+    { path: '', redirectTo: 'plans', pathMatch: 'full' },
+    {
+      path: 'plans',
+      loadComponent: () =>
+        import('./admin-imported/pages/Patient_requests/plans.component').then(
+          m => m.PlansComponent
+        )
+    },
+    {
+      path: 'wallet',
+      loadComponent: () =>
+        import('./admin-imported/pages/Professional_requests/wallet.component').then(
+          m => m.WalletComponent
+        )
+    }
+  ]
+}
+
+
+
+
  
   
     ]
