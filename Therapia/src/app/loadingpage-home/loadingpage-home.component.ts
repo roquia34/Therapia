@@ -12,27 +12,51 @@ import { Router } from '@angular/router';
   styleUrls: ['./loadingpage-home.component.scss']
 })
 export class LoadingpageHomeComponent implements OnInit {
+  isLoggedIn: boolean = false;
 
   constructor(private router: Router) {}
 
   ngOnInit(): void {
-    // يمكنك إضافة أي منطق تحتاجه عند تحميل الكومبوننت
+    // مثلًا تفقد وجود توكن أو flag في localStorage
+    this.isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
   }
 
-  // للانتقال لصفحة تسجيل الدخول
+  scrollToSection(id: string) {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+
   openLogin(): void {
     this.router.navigate(['/login']);
   }
 
-  // للانتقال لصفحة إنشاء الحساب
   openSignUp(): void {
     this.router.navigate(['/signup']);
   }
 
-  // دالة إضافية للعودة للصفحة الرئيسية (إذا احتجتها)
   goHome(): void {
     this.router.navigate(['/home']);
   }
+
+  logout(): void {
+    localStorage.removeItem('isLoggedIn');
+    this.isLoggedIn = false;
+    this.router.navigate(['/home']);
+  }
+ goToProfile(): void {
+  const role = localStorage.getItem('role');
+  const userId = localStorage.getItem('userId');
+
+  if (role === 'patient' && userId) {
+    this.router.navigate([`/patient/${userId}`]);
+  } else {
+    this.router.navigate(['/dashboard']);
+  }
+}
+
+
 }
 
  

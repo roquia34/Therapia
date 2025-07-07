@@ -5,19 +5,27 @@
 
       <div class="bx bx-menu" id="menu-icon"></div>
       <ul class="navbar" >
-        <li><a href="#home">Home</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#team">Our Team</a></li>
-        <li><a href="#review">Review</a></li>
+        <li><a (click)="scrollToSection('home')">Home</a></li>
+        <li><a (click)="scrollToSection('services')">Services</a></li>
+        <li><a (click)="scrollToSection('about')">About</a></li>
+        <li><a (click)="scrollToSection('our-team')">Our Team</a></li>
+        <li><a (click)="scrollToSection('review')">Review</a></li>
       </ul>
-  
-      <div class="top-btn">
-        <button class="nav-btn" (click)="openSignUp()">Sign up</button>
-      </div>
-      <div class="top-btn">
-        <button class="btn" (click)="openLogin()">Log In</button>
-      </div>
+   
+     <div class="top-btn" *ngIf="!isLoggedIn">
+  <button class="nav-btn" (click)="openSignUp()">Sign up</button>
+</div>
+<div class="top-btn" *ngIf="!isLoggedIn">
+  <button class="btn" (click)="openLogin()">Log In</button>
+</div>
+<div class="top-btn" *ngIf="isLoggedIn">
+  <button class="nav-btn" (click)="goToProfile()">My Profile</button>
+</div>
+<div class="top-btn" *ngIf="isLoggedIn">
+  <button class="btn" (click)="logout()">Logout</button>
+</div>
+
+
     </header>
   </div>
   

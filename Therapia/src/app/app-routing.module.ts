@@ -21,6 +21,7 @@ import { MySessionDashbordComponent } from './my-session-dashbord/my-session-das
 import { MySessionGuidelineComponent } from './my-session-guideline/my-session-guideline.component';
 import { DashboardComponent } from './dashboard-imported/pages/dashboard/dashboard.component';
 import { ProffesionalsBookComponent } from './proffesionals-book/proffesionals-book.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
 
 const routes: Routes = [
@@ -28,6 +29,7 @@ const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomePageComponent},
   { path: 'login', component: LoginComponent },
+  {path: 'forgot-password', component: ForgotPasswordComponent},
   { path: 'signup', component: SignupComponent },
   { path: 'confirm-email', component: SignupConfirmEmailComponent },
   { path:'complete-profile', component:SignupCompleteProfileComponent},

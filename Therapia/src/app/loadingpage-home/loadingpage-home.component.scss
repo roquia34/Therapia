@@ -100,7 +100,7 @@ body.hide-navbar nav {
   transition: all 0.5s ease;
   border-bottom: 3px solid transparent;
   text-decoration: none;
-
+  cursor: pointer;
   &:hover,
   &.action {
     color: $text-color;

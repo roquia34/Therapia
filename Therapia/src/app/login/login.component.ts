@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
   
   loginForm!: FormGroup;
-
+  
   constructor(
     private formBuilder: FormBuilder,
     private router: Router
@@ -20,11 +20,12 @@ export class LoginComponent implements OnInit {
     this.initializeForm();
   }
 
-  // إنشاء النموذج مع التحقق من صحة البيانات
+  // إنشاء النموذج مع الدور
   initializeForm(): void {
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]]
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      role: ['', Validators.required]
     });
   }
 
@@ -32,60 +33,63 @@ export class LoginComponent implements OnInit {
   onLogin(): void {
     if (this.loginForm.valid) {
       const loginData = this.loginForm.value;
+      const role = loginData.role;
+      const dummyId = 123;
+
+      // تخزين بيانات الدخول في localStorage
+      localStorage.setItem('isLoggedIn', 'true');
+      localStorage.setItem('role', role);
+      localStorage.setItem('userId', dummyId.toString());
+
       console.log('Login Data:', loginData);
-      
-      // هنا يمكنك إضافة منطق التحقق من البيانات مع الخادم
-      // مثال: this.authService.login(loginData).subscribe(...)
-      
-      // في حالة نجاح تسجيل الدخول
-      this.router.navigate(['/patient/123']); // أو أي صفحة تريد التوجه إليها
-      
+
+      // التوجيه حسب الدور
+      if (role === 'patient') {
+        this.router.navigate([`/patient/${dummyId}`]);
+      } else {
+        this.router.navigate(['/dashboard']);
+      }
     } else {
-      // وضع علامة على جميع الحقول كـ touched لإظهار رسائل الخطأ
       this.markFormGroupTouched();
     }
   }
 
-  // وضع علامة على جميع حقول النموذج
+  // لجعل جميع الحقول تظهر الأخطاء
   markFormGroupTouched(): void {
     Object.keys(this.loginForm.controls).forEach(key => {
       this.loginForm.get(key)?.markAsTouched();
     });
   }
 
-  // إغلاق نموذج تسجيل الدخول والعودة للصفحة الرئيسية
+  // إغلاق النموذج
   closeLogin(): void {
     this.router.navigate(['/home']);
   }
 
-  // التوجه لصفحة إنشاء حساب جديد
+  // فتح صفحة تسجيل حساب
   goToSignUp(): void {
     this.router.navigate(['/signup']);
   }
 
-  // نسيت كلمة المرور
+  // نسيان كلمة المرور
   forgotPassword(): void {
     this.router.navigate(['/forgot-password']);
   }
 
-  // تسجيل الدخول بالوسائط الاجتماعية
+  // تسجيل الدخول الاجتماعي (مكانك تضيف api لاحقًا)
   loginWithGoogle(): void {
     console.log('Login with Google');
-    // إضافة منطق تسجيل الدخول بـ Google
   }
 
   loginWithFacebook(): void {
     console.log('Login with Facebook');
-    // إضافة منطق تسجيل الدخول بـ Facebook
   }
 
   loginWithGithub(): void {
     console.log('Login with Github');
-    // إضافة منطق تسجيل الدخول بـ Github
   }
 
   loginWithLinkedin(): void {
     console.log('Login with LinkedIn');
-    // إضافة منطق تسجيل الدخول بـ LinkedIn
   }
 }

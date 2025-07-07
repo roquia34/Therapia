@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 
@@ -8,105 +7,84 @@ import { Router } from '@angular/router';
   templateUrl: './our-therapists.component.html',
   styleUrls: ['./our-therapists.component.scss'],
 })
-export class OurTherapistsComponent implements OnInit {
+export class OurTherapistsComponent implements OnInit, AfterViewInit {
   therapists: any[] = [];
   filteredTherapists: any[] = [];
   availableNowCount: number = 0;
   loading: boolean = true;
-  filterForm!: FormGroup;
-  Math = Math;
   availableTherapistsList: any[] = [];
+  Math = Math;
+
+
+  @ViewChild('searchInput') searchInputRef!: ElementRef;
+  @ViewChild('sortSelect') sortSelectRef!: ElementRef;
 
   constructor(
     private http: HttpClient,
-    private fb: FormBuilder,
     private router: Router
   ) {}
 
   ngOnInit() {
     this.fetchTherapists();
-    this.initForm();
+  }
+
+  ngAfterViewInit(): void {
+    // استمع للتغييرات في البحث والفرز
+    this.searchInputRef.nativeElement.addEventListener('input', () => {
+      this.applySimpleFilters();
+    });
+
+    this.sortSelectRef.nativeElement.addEventListener('change', () => {
+      this.applySimpleFilters();
+    });
   }
 
   fetchTherapists() {
-    this.http.get<any[]>('https://6803c4b879cb28fb3f599ecb.mockapi.io/therapists')
+    this.http
+      .get<any[]>('https://6803c4b879cb28fb3f599ecb.mockapi.io/therapists')
       .subscribe((data) => {
         this.therapists = data;
         this.filteredTherapists = [...this.therapists];
-        const availableTherapists = this.therapists.filter(t => t.nextAvailableInMinutes <= 15);
+        const availableTherapists = this.therapists.filter(
+          (t) => t.nextAvailableInMinutes <= 15
+        );
         this.availableNowCount = availableTherapists.length;
         this.availableTherapistsList = availableTherapists.slice(0, 4);
         this.loading = false;
       });
   }
 
-  initForm() {
-    this.filterForm = this.fb.group({
-      search: [''],
-      sortBy: [''],
-      availability: [false],
-      maxPrice: [null],
-      gender: [''],
-      language: ['']
-    });
+  applySimpleFilters() {
+    const searchValue = this.searchInputRef.nativeElement.value.toLowerCase();
+    const sortValue = this.sortSelectRef.nativeElement.value;
 
-    this.filterForm.valueChanges.subscribe(() => {
-      this.applyFilters();
-    });
-  }
-
-  applyFilters() {
-    let { search, sortBy, availability, maxPrice, gender, language } = this.filterForm.value;
     let filtered = [...this.therapists];
 
-    if (search) {
-      filtered = filtered.filter(t => t.name.toLowerCase().includes(search.toLowerCase()));
+    // فلترة البحث
+    if (searchValue) {
+      filtered = filtered.filter(t =>
+        t.name.toLowerCase().includes(searchValue) ||
+        t.specialty?.toLowerCase().includes(searchValue)
+      );
     }
 
-    if (availability) {
-      filtered = filtered.filter(t => t.nextAvailableInMinutes <= 15);
-    }
-
-    if (maxPrice != null) {
-      filtered = filtered.filter(t => t.sessionPrice <= maxPrice);
-    }
-
-    if (gender) {
-      filtered = filtered.filter(t => t.gender === gender);
-    }
-
-    if (language) {
-      filtered = filtered.filter(t => t.language?.toLowerCase() === language.toLowerCase());
-    }
-
-    if (sortBy === 'priceAsc') {
+    // ترتيب بالسعر
+    if (sortValue === 'Fees (Low To High)') {
       filtered = filtered.sort((a, b) => a.sessionPrice - b.sessionPrice);
-    } else if (sortBy === 'priceDesc') {
+    } else if (sortValue === 'Fees (High To Low)') {
       filtered = filtered.sort((a, b) => b.sessionPrice - a.sessionPrice);
-    } else if (sortBy === 'rating') {
-      filtered = filtered.sort((a, b) => b.reviewsCount - a.reviewsCount);
     }
 
     this.filteredTherapists = filtered;
   }
 
-  resetFilters() {
-    this.filterForm.reset({
-      search: '',
-      sortBy: '',
-      availability: false,
-      maxPrice: null,
-      gender: '',
-      language: ''
-    });
-  }
-
   showAvailableTherapists() {
-    this.filteredTherapists = this.therapists.filter(t => t.nextAvailableInMinutes <= 15);
+    this.filteredTherapists = this.therapists.filter(
+      (t) => t.nextAvailableInMinutes <= 15
+    );
   }
 
- viewProfile() {
-  this.router.navigate(['/therapist-profile', 'default']);
-}
-
+  viewProfile() {
+    this.router.navigate(['/therapist-profile', 'default']);
+  }
 }

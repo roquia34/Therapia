@@ -1,19 +1,19 @@
 $main-color: #6f60bf;
-$background-color: #c3f3c1;
-$input-color: #ffc9c9;
+$background-color: #eeeafd; // خلفية هادئة بنفسيجية فاتحة
+$input-color: #d5cbff; // تدرج بنفسجي فاتح للمدخلات
 
 .card-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 70vh; // ارتفاع مناسب تحت الهيدر
+  min-height: 70vh;
   padding: 40px 20px;
 }
 
 .card {
   background-color: $background-color;
   padding: 50px 25px;
-  width: 700px; // ← أكبر
+  width: 700px;
   border-radius: 16px;
   font-family: 'Segoe UI', sans-serif;
   color: #000;
@@ -37,16 +37,16 @@ h3 {
   gap: 12px;
   margin-bottom: 25px;
 
-  .date-btn {
-    flex: 1;
-    background: white;
+  .date-input {
+    width: 100%;
+    padding: 12px;
+    background-color: #fff;
     border: 2px solid $main-color;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 1rem;
     color: $main-color;
-    border-radius: 8px;
-    padding: 10px;
-    cursor: pointer;
-    font-weight: 600;
-    font-size: 0.95rem;
+    font-weight: 500;
   }
 }
 
@@ -67,11 +67,13 @@ h3 {
     .time-box {
       width: 100%;
       padding: 12px;
-      background-color: $input-color;
-      border: none;
+      background-color: #fff;
+      border: 2px solid $main-color;
       border-radius: 10px;
       text-align: center;
       font-size: 1rem;
+      color: $main-color;
+      font-weight: 500;
     }
   }
 }
@@ -128,16 +130,26 @@ h3 {
 .confirm-btn {
   width: 100%;
   padding: 14px;
-  background-color: $input-color;
+  background-color: $main-color;
   border: none;
   border-radius: 12px;
   font-weight: bold;
   font-size: 1rem;
   cursor: pointer;
-  color: #000;
+  color: white;
   transition: background-color 0.3s ease;
 
   &:hover {
-    background-color: lighten($input-color, 10%);
+    background-color: lighten($main-color, 10%);
   }
+}
+
+.success-message {
+  background-color: lighten($main-color, 45%);
+  color: $main-color;
+  padding: 10px 15px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  font-weight: bold;
+  text-align: center;
 }

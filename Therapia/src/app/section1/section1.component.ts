@@ -7,25 +7,29 @@ import { Router } from '@angular/router';
   styleUrl: './section1.component.scss'
 })
 export class Section1Component implements OnInit {
+  isLoggedIn: boolean = false;
 
   constructor(private router: Router) {}
 
   ngOnInit(): void {
-    // يمكنك إضافة أي منطق تحتاجه عند تحميل الكومبوننت
+    this.isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
   }
 
-  // للانتقال لصفحة تسجيل الدخول
   openLogin(): void {
     this.router.navigate(['/login']);
   }
 
-  // للانتقال لصفحة إنشاء الحساب
   openSignUp(): void {
     this.router.navigate(['/signup']);
   }
 
-  // دالة إضافية للعودة للصفحة الرئيسية (إذا احتجتها)
   goHome(): void {
+    this.router.navigate(['/home']);
+  }
+
+  logout(): void {
+    localStorage.removeItem('isLoggedIn');
+    this.isLoggedIn = false;
     this.router.navigate(['/home']);
   }
 }

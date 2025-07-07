@@ -1,3 +1,8 @@
+
+$bg-color: #f4f6f9;
+$text-color: #1f2937;
+$main-color: #6f60bf;
+
 .therapists-page {
   padding-top: 10rem;
   background: #f8f9fa;
@@ -81,8 +86,8 @@
       .right-side {
         .explore-btn {
           background: transparent;
-          border: 1px solid #007bff;
-          color: #007bff;
+          border: 1px solid $main-color;
+          color: $main-color;
           padding: 1rem 4rem;
           border-radius: 8px;
           font-size: 1rem;
@@ -90,7 +95,7 @@
           transition: 0.3s ease;
 
           &:hover {
-            background: #007bff;
+            background: $main-color;
             color: #fff;
           }
         }
@@ -109,7 +114,7 @@
 
     .page-title {
       font-size: 3rem;
-      color: #1d7ce0;
+      color: $main-color;
       margin: 2rem 0;
       text-align: center;
     }
@@ -119,7 +124,7 @@
       color: #5f6368;
 
       a {
-        color: #1a73e8;
+        color: $main-color;
         text-decoration: none;
       }
     }
@@ -229,7 +234,7 @@
 
       
       .filters h2 {
-        color: #0066ff;
+        color: $main-color;
         font-size: 20px;
         text-align: center;
         margin-bottom: 20px;
@@ -246,7 +251,7 @@
       
       .filter-group h3 {
         font-size: 14px;
-        color: #0066ff;
+        color: $main-color;
         margin-bottom: 10px;
         display: flex;
         align-items: center;
@@ -257,6 +262,7 @@
         display: flex;
         flex-direction: column;
         gap: 10px;
+      
       }
       
       .date-picker, .select-field {
@@ -282,7 +288,7 @@
         flex: 1;
         appearance: none;
         height: 5px;
-        background: linear-gradient(to right, #007bff, #66b2ff); // تدرج لون جميل
+        background: linear-gradient(to right, $main-color, #9c8fe9); // تدرج لون جميل
         border-radius: 5px;
         outline: none;
         transition: background 450ms ease-in;
@@ -293,7 +299,7 @@
         width: 18px;
         height: 18px;
         background: #ffffff;
-        border: 2px solid #007bff;
+        border: 2px solid $main-color;
         border-radius: 50%;
         cursor: pointer;
         transition: transform 0.2s ease;
@@ -309,9 +315,9 @@
       .reset-btn {
         width: 100%;
         padding: 10px;
-        border: 2px solid #0066ff;
+        border: 2px solid $main-color;
         background: transparent;
-        color: #0066ff;
+        color: $main-color;
         font-weight: bold;
         border-radius: 8px;
         margin-top: 10px;
@@ -320,14 +326,14 @@
       }
       
       .reset-btn:hover {
-        background: #0066ff;
+        background: $main-color;
         color: #ffffff;
       }
       
 
       .therapists-list {
         display: grid;
-        grid-template-columns: repeat(2, 1fr); // عمودين
+        grid-template-columns: repeat(3, 1fr); // عمودين
         gap: 1rem; // المسافة بين الكروت أفقي ورأسي
         padding: 1rem; // padding حوالين المجموعة كلها
         align-content: start; // <<< دي الإضافة الصح
@@ -338,7 +344,7 @@
         background: #fff;
         border-radius: 12px;
         box-shadow: 0 0 15px rgba(0, 0, 0, 0.08);
-        padding: 1rem 1.2rem; // padding جوه الكارد
+        padding: 1rem 4rem; // padding جوه الكارد
         text-align: center;
         display: flex;
         flex-direction: column;
@@ -393,7 +399,7 @@
       
       .doctor-sessions {
         font-size: 0.85rem;
-        color: #4a90e2;
+        color: #a297e2;
       }
       
       .doctor-rating {
@@ -435,7 +441,7 @@
       
       .tag {
         background: #e0f7f6;
-        color: #009688;
+        color: $main-color;
         padding: 4px 8px;
         border-radius: 12px;
         font-size: 0.8rem;
@@ -450,7 +456,7 @@
       .pricing {
         font-size: 0.9rem;
         font-weight: bold;
-        color: blue;
+        color: $main-color;
         margin-bottom: 12px;
         .num-time{
           color:#666 ;
@@ -475,23 +481,23 @@
       
       .view-profile {
         background-color: transparent;
-        color: #4a90e2;
-        border: 1px solid #4a90e2;
+        color: $main-color;
+        border: 1px solid $main-color;
         margin-right: 5px;
       }
       
       .view-profile:hover {
-        background-color: #4a90e2;
+        background-color: $main-color;
         color: #fff;
       }
       
       .book-now {
-        background-color: #4a90e2;
+        background-color: $main-color;
         color: #fff;
       }
       
       .book-now:hover {
-        background-color: #357ABD;
+        background-color: $main-color;
       }
       
       
