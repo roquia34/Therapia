@@ -84,7 +84,7 @@ export class MySessionDashbordComponent implements OnInit {
   datasets: [
     {
       label: 'Sessions',
-      data: [5, 7, 6, 8], // عدّلي الأرقام حسب بياناتك
+      data: [5, 7, 6, 8], 
       backgroundColor: '#6366f1',
       borderRadius: 10,
       barThickness: 30
@@ -257,7 +257,7 @@ export class MySessionDashbordComponent implements OnInit {
     // Here you would typically send the data to a service
     // this.dataService.saveDailyData(submissionData);
     
-    alert('تم حفظ البيانات بنجاح!');
+    alert('Data saved successfully!');
     this.showFormSlider = false;
     this.selectedDay = null;
   }

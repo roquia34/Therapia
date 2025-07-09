@@ -7,25 +7,36 @@ import { Component } from '@angular/core';
 })
 export class ProffesionalsBookComponent {
 
- confirmationMessage = '';
+  confirmationMessage = '';
 
   formData = {
     time: '',
     day: '',
     month: '',
-    min: '',
-    sec: '',
+    duration: 20,
     type: 'meeting'
   };
 
- 
+  price = 0;
+
+  constructor() {
+    this.updatePrice(); // عند التحميل احسب السعر الأولي
+  }
+
+  updatePrice() {
+    // كل 10 دقائق = 20 دولار
+    this.price = (this.formData.duration / 10) * 20;
+  }
+
   confirmBooking() {
-  // هنا تبعتي البيانات للـ Admin مثلاً API أو مؤقتاً console
-  console.log('Booking data sent to admin:', this.formData);
-
-  // ✅ عرض رسالة تنبيه (Alert)
-  alert('تم التأكيد بنجاح ✅');
-
+    console.log('Booking data sent to admin:', this.formData);
+    alert('Successfully Confirmed ✅');
+   
+    
+  }
+  isFormValid(): boolean {
+  const { time, day, month, duration, type } = this.formData;
+  return !!(time && day && month && duration && type);
 }
 
 }

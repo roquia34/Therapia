@@ -14,11 +14,14 @@
     </div>
 
     <div class="session-time">
-      <label>Session Time</label>
-      <div class="time-inputs">
-        <input type="text" class="time-box" [(ngModel)]="formData.min" placeholder="Min" />
-        <input type="text" class="time-box" [(ngModel)]="formData.sec" placeholder="Sec" />
-      </div>
+      <label>Session Duration</label>
+      <select class="time-select" [(ngModel)]="formData.duration" (change)="updatePrice()">
+        <option [ngValue]="20">20 min</option>
+        <option [ngValue]="30">30 min</option>
+        <option [ngValue]="40">40 min</option>
+        <option [ngValue]="50">50 min</option>
+        <option [ngValue]="60">60 min</option>
+      </select>
     </div>
 
     <div class="session-type">
@@ -37,9 +40,11 @@
 
     <div class="price">
       <label>Price</label>
-      <p>$500</p>
+      <p>${{ price }}</p>
     </div>
 
-    <button class="confirm-btn" (click)="confirmBooking()">Confirm</button>
+   
+    <button class="confirm-btn" [disabled]="!isFormValid()" (click)="confirmBooking()">Confirm</button>
+
   </div>
 </div>

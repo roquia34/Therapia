@@ -2,14 +2,16 @@
   <!-- صور الأيام -->
   <div class="days-column">
     <div class="arrow up" (click)="prev()">↑</div>
+
     <div
       class="day-circle"
-      *ngFor="let day of visibleDays"
-      (click)="selectDay(day)"
-      [class.selected]="selectedDay === day"
+      *ngFor="let dayObj of visibleDays"
+      (click)="selectDay(dayObj.day)"
+      [class.selected]="selectedDay === dayObj.day"
     >
-      <img [src]="'assets/images/day' + day + '.png'" alt="day image" />
+      <img [src]="dayObj.image" alt="day image" />
     </div>
+
     <div class="arrow down" (click)="next()">↓</div>
   </div>
 

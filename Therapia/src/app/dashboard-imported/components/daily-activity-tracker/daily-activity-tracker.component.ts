@@ -10,11 +10,21 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['./daily-activity-tracker.component.scss']
 })
 export class DailyActivityTrackerComponent {
-  allDays = [1, 2, 3, 4, 5, 6, 7]; // لو فيه صور أكتر
-  visibleDays: number[] = [];
+  // ✅ بدل الأرقام فقط، كل عنصر فيه اليوم + مسار الصورة
+  allDays = [
+    { day: 1, image: '/Daliy-activity/traning.jpg' },
+    { day: 2, image: '/Daliy-activity/yoga.jpg' },
+    { day: 3, image: '/Daliy-activity/food.jpg' },
+    { day: 4, image: '/Daliy-activity/cup.jpg' },
+    { day: 5, image: '/Daliy-activity/calender.png' },
+    { day: 6, image: '/Daliy-activity/image-sun.jpg' },
+    
+  ];
+
+  visibleDays: { day: number; image: string }[] = [];
   selectedDay = 1;
 
-  // معلومات كل يوم
+  // بيانات اليوم
   dayData: {
     [key: number]: {
       exercise: string;

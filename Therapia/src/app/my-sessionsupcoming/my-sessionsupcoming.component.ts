@@ -75,4 +75,45 @@ export class MySessionsupcomingComponent  {
   getInitials(name: string): string {
     return name.split(' ').map(n => n[0]).join('').toUpperCase();
   }
+
+  joinSession(appointment: Appointment): void {
+  // هنا ممكن تضيفي لينك Zoom أو أي منصة جلسات حسب الحاجة
+  alert(`Joining session with ${appointment.doctorName}`);
+  // مثال: window.open(appointment.sessionLink, '_blank');
+}
+
+
+
+showModal = false;
+selectedAppointment: Appointment | null = null;
+newDate: string = '';
+newTime: string = '';
+
+rescheduleSession(appointment: Appointment): void {
+  this.selectedAppointment = appointment;
+  this.newDate = appointment.date;
+  this.newTime = ''; // ممكن تستخدمي وقت افتراضي
+  this.showModal = true;
+}
+
+closeModal(): void {
+  this.showModal = false;
+  this.selectedAppointment = null;
+}
+
+confirmReschedule(): void {
+  if (this.selectedAppointment) {
+    this.selectedAppointment.date = this.newDate;
+    this.selectedAppointment.sessionTime = this.newTime;
+    alert(`Rescheduled session with ${this.selectedAppointment.doctorName} to ${this.newDate} at ${this.newTime}`);
+
+    // هذا السطر يجبر Angular على إعادة التحديث
+    this.upcomingAppointments = [...this.upcomingAppointments];
+
+    this.closeModal();
+  }
+}
+
+
+
 }

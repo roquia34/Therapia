@@ -44,9 +44,10 @@
                 </div>
 
                 <div class="appointment-actions">
-                  <button class="btn-primary">Join Session</button>
-                  <button class="btn-secondary">Reschedule</button>
-                </div>
+  <button class="btn-primary" (click)="joinSession(appointment)">Join Session</button>
+  <button class="btn-secondary" (click)="rescheduleSession(appointment)">Reschedule</button>
+</div>
+
               </div>
             </div>
           </div>
@@ -74,4 +75,22 @@
       </div>
     </main>
   
+<!-- Modal for Rescheduling -->
+<div class="modal-overlay" *ngIf="showModal">
+  <div class="modal-content">
+    <h2>Reschedule Session</h2>
+    <p>Rescheduling for: <strong>{{ selectedAppointment?.doctorName }}</strong></p>
+
+    <label for="newDate">New Date:</label>
+    <input type="date" id="newDate" [(ngModel)]="newDate">
+
+    <label for="newTime">New Time:</label>
+    <input type="time" id="newTime" [(ngModel)]="newTime">
+
+    <div class="modal-actions">
+      <button class="btn-primary" (click)="confirmReschedule()">Confirm</button>
+      <button class="btn-secondary" (click)="closeModal()">Cancel</button>
+    </div>
+  </div>
+</div>
 
