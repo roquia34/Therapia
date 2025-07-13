@@ -1,8 +1,8 @@
 <!-- app.component.html -->
-<app-loadingpage-home *ngIf="showNavbar && !isThankYouPage() && !isSignupConfirmEmail()"></app-loadingpage-home>
+<app-loadingpage-home *ngIf="showNavbar && !isThankYouPage() && !isSignupConfirmEmail()  && !isSignupPage() && !isForgotPassword()"></app-loadingpage-home>
 
 <!-- المحتوى اللي بيتغير حسب الراوت -->
 <router-outlet></router-outlet>
 
 <!-- العناصر الثابتة -->
-<app-footer *ngIf="showFooter && !isThankYouPage() && !isSignupConfirmEmail()"></app-footer>
+<app-footer *ngIf="showFooter && !isThankYouPage() && !isSignupConfirmEmail() && !isSignupPage() && !isForgotPassword()"></app-footer>

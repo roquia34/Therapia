@@ -32,4 +32,10 @@ export class AppComponent {
   isSignupConfirmEmail(): boolean {
     return this.router.url === '/confirm-email';
   }
+ isSignupPage(): boolean {
+  return this.router.url.startsWith('/signup/');
+}
+isForgotPassword(): boolean {
+  return this.router.url.startsWith('/forgot-password');
+}
 }

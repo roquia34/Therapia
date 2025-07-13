@@ -19,24 +19,27 @@ export class SignupComponent {
   constructor(private router: Router) {}
 
   // اختيار نوع المستخدم والتوجه للصفحة المناسبة
-  chooseKind(userTypeId: number): void {
-    const selectedType = this.userTypes[userTypeId];
+  // chooseKind(userTypeId: number): void {
+  //   const selectedType = this.userTypes[userTypeId];
     
-    if (selectedType) {
-      console.log(`Selected user type: ${selectedType.name}`);
+  //   if (selectedType) {
+  //     console.log(`Selected user type: ${selectedType.name}`);
       
-      // حفظ نوع المستخدم في الذاكرة المؤقتة أو localStorage
-      sessionStorage.setItem('selectedUserType', JSON.stringify(selectedType));
+  //     // حفظ نوع المستخدم في الذاكرة المؤقتة أو localStorage
+  //     sessionStorage.setItem('selectedUserType', JSON.stringify(selectedType));
       
-      // التوجه لصفحة التسجيل المناسبة
-      this.router.navigate([`/${selectedType.route}`], {
-        state: { 
-          userType: selectedType.name,
-          userTypeId: userTypeId 
-        }
-      });
-    }
-  }
+  //     // التوجه لصفحة التسجيل المناسبة
+  //     this.router.navigate([`/${selectedType.route}`], {
+  //       state: { 
+  //         userType: selectedType.name,
+  //         userTypeId: userTypeId 
+  //       }
+  //     });
+  //   }
+  // }
+  chooseKind(role: string) {
+  this.router.navigate(['/signup', role]);
+}
 
   // إغلاق صفحة التسجيل والعودة للصفحة الرئيسية
   closeSignUp(): void {

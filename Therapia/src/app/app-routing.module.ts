@@ -52,10 +52,8 @@ const routes: Routes = [
   },
 {path:'professionals-book', component: ProffesionalsBookComponent},
 
-  { path: 'physiotherapist-signup', component: SignupCompleteProfileComponent },
-  { path: 'trainer-signup', component: SignupCompleteProfileComponent },
-  { path: 'nutritionist-signup', component: SignupCompleteProfileComponent },
-  { path: 'forgot-password', component: LoginComponent },
+  { path: 'signup/:role', component: SignupCompleteProfileComponent },
+   { path: 'forgot-password', component: LoginComponent },
   { path: 'patient-menu' , component: PatientMenuComponent},
 
 

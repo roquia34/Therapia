@@ -3,22 +3,27 @@
   
     <h1>Sign Up</h1>
     <div class="cards">
-      <div class="card" (click)="chooseKind(0)">
-        <img src="signup/patient.jpeg" alt="Nutritionist">
-        <p>As a Nutritionist</p>
-      </div>
-      <div class="card" (click)="chooseKind(1)">
-        <img src="signup/doctor.jpeg" alt="Doctor">
-        <p>As a Physiotherapist</p>
-      </div>
-      <div class="card" (click)="chooseKind(2)">
-        <img src="signup/Physiotherapist.jpeg" alt="Trainer">
-        <p>As a Trainer</p>
-      </div>
-      <div class="card" (click)="chooseKind(3)">
-        <img src="signup/Nutritionist.jpeg" alt="Patient">
-        <p>As a Patient</p>
-      </div>
+     
+      <div class="card" (click)="chooseKind('nutritionist')">
+  <img src="signup/patient.jpeg" alt="Nutritionist">
+  <p>As a Nutritionist</p>
+</div>
+
+<div class="card" (click)="chooseKind('physiotherapist')">
+  <img src="signup/doctor.jpeg" alt="Physiotherapist">
+  <p>As a Physiotherapist</p>
+</div>
+
+<div class="card" (click)="chooseKind('trainer')">
+  <img src="signup/Physiotherapist.jpeg" alt="Trainer">
+  <p>As a Trainer</p>
+</div>
+
+<div class="card" (click)="chooseKind('patient')">
+  <img src="signup/Nutritionist.jpeg" alt="Patient">
+  <p>As a Patient</p>
+</div>
+
     </div>
   </div>
   

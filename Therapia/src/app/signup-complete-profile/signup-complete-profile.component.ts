@@ -1,18 +1,22 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
 
 @Component({
   selector: 'app-signup-complete-profile',
   templateUrl: './signup-complete-profile.component.html',
   styleUrls: ['./signup-complete-profile.component.scss']
 })
-export class SignupCompleteProfileComponent {
+export class SignupCompleteProfileComponent implements OnInit {
 
   signupForm: FormGroup;
+  role: string = '';
 
-  constructor(private fb: FormBuilder , private router: Router) {
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private route: ActivatedRoute  
+  ) {
     this.signupForm = this.fb.group({
       firstname: ['', Validators.required],
       lastname: ['', Validators.required],
@@ -22,19 +26,20 @@ export class SignupCompleteProfileComponent {
     });
   }
 
-  onSubmit() {
-    
-   if (this.signupForm.valid) {
-  // ممكن تخزني بياناته مؤقتًا لو عايزة
-  console.log(this.signupForm.value);
-  this.router.navigate(['/confirm-email']);  // ← وديه للصفحة دي
-}
+  ngOnInit() {
+    this.role = this.route.snapshot.paramMap.get('role') || '';
+    console.log("User selected role:", this.role);
+  }
 
+  onSubmit() {
+    if (this.signupForm.valid) {
+      console.log(this.signupForm.value);
+      
+      this.router.navigate(['/confirm-email']);
+    }
   }
 
   navigateToLogin() {
     this.router.navigate(['/login']);
   }
-  
-  
 }
